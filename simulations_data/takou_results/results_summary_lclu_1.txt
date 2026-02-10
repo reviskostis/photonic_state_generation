@@ -1,0 +1,5 @@
+--------- Results lclu_1 --------
+CNOT counts from Naive: 48
+Emitters from Naive: 7
+CNOT counts from Heur1: 48
+Emitters from Heur1: 7

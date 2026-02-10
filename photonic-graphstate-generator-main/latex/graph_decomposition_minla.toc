@@ -1,0 +1,23 @@
+\contentsline {section}{\numberline {1}Introduction and Motivation}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Why Cut-Rank Matters}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Mathematical Foundations}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Graphs and Adjacency Matrices}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Cut-Rank over $\mathbb {F}_2$}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Modules and Twin Vertices}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Distance-Hereditary Graphs}{4}{subsection.2.4}%
+\contentsline {section}{\numberline {3}The Balanced Rank-1 Partitioning Problem}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Problem Formulation}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Balance Metrics}{5}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Algorithms}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Algorithm Overview}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Step 1: Finding Rank-1 Components}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Step 2: Greedy Balanced Partition}{6}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Step 3: Simulated Annealing Refinement}{7}{subsection.4.4}%
+\contentsline {section}{\numberline {5}From Decomposition to Linear Arrangement}{7}{section.5}%
+\contentsline {subsection}{\numberline {5.1}The Partition Graph}{7}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Ordering Partitions (TSP Formulation)}{8}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Ordering Vertices Within Partitions}{8}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Final Linear Arrangement}{9}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Complexity and Performance}{9}{section.6}%
+\contentsline {section}{\numberline {7}Usage Summary}{9}{section.7}%
+\contentsline {section}{\numberline {8}Conclusion}{10}{section.8}%

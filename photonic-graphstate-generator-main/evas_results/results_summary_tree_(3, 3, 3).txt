@@ -1,0 +1,5 @@
+--------- Results tree_(3, 3, 3) --------
+CNOT counts from Naive: 10
+Emitters from Naive: 9
+CNOT counts from Heur1: 8
+Emitters from Heur1: 9

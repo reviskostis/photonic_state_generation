@@ -1,0 +1,5 @@
+--------- Results RHG_(3, 3, 2) --------
+CNOT counts from Naive: 369
+Emitters from Naive: 17
+CNOT counts from Heur1: 204
+Emitters from Heur1: 17

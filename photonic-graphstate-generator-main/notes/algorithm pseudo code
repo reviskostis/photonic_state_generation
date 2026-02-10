@@ -1,0 +1,92 @@
+Pseudocode for the main algorithm
+    
+    tableau photons, save h0 and include a number of emitters max(h0) in tableau
+
+    iterate k -> 0:n_p-1 and define j descending
+        echelon_form; bigram and new h
+
+        define dh
+        ### Find W_j
+        switch(match in py) with dh
+            case 0,1:
+                skip
+            case -1:
+                indices = np.where(bigram[:, 0] > n_p)[0]
+                g_b, tableau rows of indices
+
+                find emitter where(g_b[n_p:n] + g_b[n+np:2*n] != 0)(0)
+
+                gate counter
+                match number of evb:
+                    1:
+                        turn Paulimatrix as X
+                        site = np+evb(0)
+                        X:I,Y:P,Z:H
+                        opperate generator by the decided Clifford Opperation
+                        gate count+1
+
+                    >1:
+                        make all X and then turn
+                        for emitter from 1-num_em:
+                            site = np + evb(emitter)
+                            X:I,Y:P,Z:H
+                            opperate generator by the decided Clifford Opperation
+                            gate count+1
+                        CX gate
+                        get remaining evb setdiff(evb,mu-np)
+                        for remaining:
+                            site = np+remainder
+                            CNOT[mu, site]
+                            gatecount+1
+
+                if SignVector[indices] == 1:
+                    perform Z
+                note Measurement site mu
+                perform CNOT[mu, j]
+
+                echelon gauge, bigram
+
+        (end of match)
+
+        index = np.where(bigram[:,0] == j) #index of g_a
+        g_a = Tab[index,:]
+        turn in Z basis:
+        X:H,Y:PH,Z:I
+        perform decided Clifford Operation
+
+        e_v_a find emitter pos in g_a
+        eta = np + eva[0]
+
+        ### now find U_e
+        gate count 0
+        match num(eva):
+            case 1:
+                Pauli to Z
+                X:H,Y:PH,Z:I
+                perform decided Clifford Operation
+            >1:
+                iterate 1-num(eva):
+                    site = np+eva
+                    turn in Z basis:
+                    X:H,Y:PH,Z:I
+                    perform Clifford Operation
+
+        make corrections g_a=-ZZ -> +ZZ
+        Signvector(a)==1:
+            perform X
+
+        ##reversed emission process
+        perform CNOT[eta,j]
+
+        R=eye(n)
+        R[:,a] = (tableau[:,j] + tableau[:,n+j]) !=0
+        ??? Do Gaugetransformation ???
+
+    (end of loop)
+
+    Find W0 TBC
+
+
+
+
+    """
