@@ -30,6 +30,8 @@ from path_clustering import (
     order_within_cluster,
 )
 from rank_width_sa import _relabel_to_int, _full_evaluate
+from lib.tableau import stabTableau
+from lib.generate_graph import GraphstateGenerator
 
 # ---------------------------------------------------------------------------
 # Output directory
@@ -130,8 +132,7 @@ for i in range(10):
     pos[20 + i] = (i * 1.5, 0.0)
 
 n = G_int.number_of_nodes()
-adj = nx.adjacency_matrix(G_int).toarray().astype(np.uint8)
-
+adj = nx.adjacency_matrix(G_int,nodelist=range(n)).toarray().astype(np.uint8)
 print(f"  Nodes: {n},  Edges: {G_int.number_of_edges()}")
 
 # ============================================================
@@ -320,14 +321,16 @@ save(fig, "04_intra_cluster_ordering.pdf")
 print("\n[Fig 5] Assembled ordering & height function")
 assembled_cost, assembled_bn = _full_evaluate(adj, global_ordering)
 
-heights = []
-for cut in range(n - 1):
-    left = global_ordering[: cut + 1]
-    right = global_ordering[cut + 1 :]
-    sub = adj[np.ix_(left, right)]
-    # GF(2) rank via path_clustering's gf2_rank
+temp_tableau = stabTableau.get_tableau_from_adj(GraphstateGenerator.permute_adjacency_matrix(adj,global_ordering))
+heights = temp_tableau.h0[1:-1]
+
+heights_old = []
+for cut in range(n-1):
+    left = global_ordering[:cut+1]
+    right = global_ordering[cut+1:]
+    sub = adj[np.ix_(left,right)]
     from rank_width_sa import gf2_rank
-    heights.append(gf2_rank(sub))
+    heights_old.append(gf2_rank(sub))
 
 fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 
@@ -346,7 +349,8 @@ ax.set_title(
 ax = axes[1]
 x_vals = list(range(1, n))
 ax.bar(x_vals, heights, color=CB_BLUE, alpha=0.75, edgecolor=CHARCOAL,
-       linewidth=0.8)
+       linewidth=0.8, label = 'Graph Generator function')
+ax.bar(x_vals,heights_old, color=CB_GREY,alpha=0.75, edgecolor=CHARCOAL,linewidth=0.8, label = 'gf2_rank function')
 ax.axhline(assembled_cost, color=CB_ORANGE, linestyle="--", linewidth=2,
            label=f"max h = {assembled_cost} (emitters)")
 ax.set_xlabel("Cut position  (vertex label)", fontsize=11)
@@ -405,12 +409,8 @@ ref_ordering, ref_cost, ref_bn = _boundary_biased_sa(
     verbose=True,
 )
 
-final_heights = []
-for cut in range(n - 1):
-    left = ref_ordering[: cut + 1]
-    right = ref_ordering[cut + 1 :]
-    sub = adj[np.ix_(left, right)]
-    final_heights.append(gf2_rank(sub))
+temp_tableau = stabTableau.get_tableau_from_adj(GraphstateGenerator.permute_adjacency_matrix(adj,ref_ordering))
+final_heights = temp_tableau.h0[1:-1]
 
 final_rank = {v: i + 1 for i, v in enumerate(ref_ordering)}
 
