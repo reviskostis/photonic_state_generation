@@ -324,14 +324,6 @@ assembled_cost, assembled_bn = _full_evaluate(adj, global_ordering)
 temp_tableau = stabTableau.get_tableau_from_adj(GraphstateGenerator.permute_adjacency_matrix(adj,global_ordering))
 heights = temp_tableau.h0[1:-1]
 
-heights_old = []
-for cut in range(n-1):
-    left = global_ordering[:cut+1]
-    right = global_ordering[cut+1:]
-    sub = adj[np.ix_(left,right)]
-    from rank_width_sa import gf2_rank
-    heights_old.append(gf2_rank(sub))
-
 fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 
 # Left: graph with vertices numbered by ordering position
@@ -349,8 +341,7 @@ ax.set_title(
 ax = axes[1]
 x_vals = list(range(1, n))
 ax.bar(x_vals, heights, color=CB_BLUE, alpha=0.75, edgecolor=CHARCOAL,
-       linewidth=0.8, label = 'Graph Generator function')
-ax.bar(x_vals,heights_old, color=CB_GREY,alpha=0.75, edgecolor=CHARCOAL,linewidth=0.8, label = 'gf2_rank function')
+       linewidth=0.8)
 ax.axhline(assembled_cost, color=CB_ORANGE, linestyle="--", linewidth=2,
            label=f"max h = {assembled_cost} (emitters)")
 ax.set_xlabel("Cut position  (vertex label)", fontsize=11)
