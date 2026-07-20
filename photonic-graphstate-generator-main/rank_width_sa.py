@@ -38,130 +38,27 @@ from optimization_script import run_optimization
 from optgraphstate import GraphState
 from lib.generate_graph import GraphstateGenerator
 from utils.ufuncs import heightfunction
+from rank_width import (
+    _gf2_rank,
+    _gf2_rank_bitpacked,
+    gf2_rank,
+    _cut_rank,
+)
 
 # ---------------------------------------------------------------------------
 #  Phase B helpers – GF(2) linear algebra
 # ---------------------------------------------------------------------------
-
-def _gf2_rank(matrix: np.ndarray) -> int:
-    """Compute the rank of a binary matrix over GF(2) using Gaussian elimination.
-
-    Parameters
-    ----------
-    matrix : np.ndarray
-        A 2-D array whose entries are 0 or 1.
-
-    Returns
-    -------
-    int
-        The GF(2) rank.
-    """
-    if matrix.size == 0:
-        return 0
-
-    # Work on a copy cast to uint8 for speed; we only need mod-2 arithmetic.
-    M = matrix.astype(np.uint8, copy=True)
-    nrows, ncols = M.shape
-    rank = 0
-    pivot_col = 0
-
-    for row in range(nrows):
-        if pivot_col >= ncols:
-            break
-
-        # Find a pivot in the current column from 'row' downward.
-        found = False
-        for k in range(row, nrows):
-            if M[k, pivot_col]:
-                found = True
-                if k != row:
-                    # Swap rows
-                    M[[row, k]] = M[[k, row]]
-                break
-
-        if not found:
-            pivot_col += 1
-            # Retry the same row with the next column
-            # (implemented via a while loop below instead of recursion)
-            continue
-
-        # Eliminate all other 1s in this column
-        for k in range(nrows):
-            if k != row and M[k, pivot_col]:
-                M[k] ^= M[row]  # XOR = addition in GF(2)
-
-        rank += 1
-        pivot_col += 1
-
-    return rank
-
-
-def _gf2_rank_bitpacked(matrix: np.ndarray) -> int:
-    """GF(2) rank using bit-packed rows for large matrices (faster).
-
-    Each row is stored as a Python int treated as a bit-vector.
-    """
-    if matrix.size == 0:
-        return 0
-
-    M = matrix.astype(np.uint8, copy=True)
-    nrows, ncols = M.shape
-
-    # Pack each row into a single Python int
-    rows = []
-    for i in range(nrows):
-        val = 0
-        for j in range(ncols):
-            if M[i, j]:
-                val |= (1 << j)
-        rows.append(val)
-
-    rank = 0
-    for col in range(ncols):
-        mask = 1 << col
-        # Find pivot
-        pivot = -1
-        for i in range(rank, nrows):
-            if rows[i] & mask:
-                pivot = i
-                break
-        if pivot == -1:
-            continue
-        # Swap pivot row into position
-        rows[rank], rows[pivot] = rows[pivot], rows[rank]
-        # Eliminate
-        for i in range(nrows):
-            if i != rank and (rows[i] & mask):
-                rows[i] ^= rows[rank]
-        rank += 1
-
-    return rank
-
-
-def gf2_rank(matrix: np.ndarray) -> int:
-    """Dispatch to the most efficient GF(2) rank routine."""
-    if matrix.size == 0:
-        return 0
-    nrows, ncols = matrix.shape
-    # For wider matrices bit-packing is faster
-    if ncols > 64:
-        return _gf2_rank_bitpacked(matrix)
-    return _gf2_rank(matrix)
+#
+# NOTE: _gf2_rank / _gf2_rank_bitpacked / gf2_rank / _cut_rank used to be
+# duplicated verbatim in this module. They are now imported from
+# rank_width.py so there is a single implementation to maintain (see
+# HEIGHT_FUNCTION_BUG_README.md for the bug this duplication previously
+# caused to drift out of sync).
 
 
 # ---------------------------------------------------------------------------
 #  Phase B – Evaluation
 # ---------------------------------------------------------------------------
-
-def _cut_rank(adj: np.ndarray, ordering: list[int], cut_index: int) -> int:
-    """ Compute the GF(2) rank of the cut sub-matrix at position cut_index.
-        The cut separates ordering[:cut_index+1]  (left) from     ordering[cut_index+1:]  (right).
-    """
-    left = ordering[: cut_index + 1]
-    right = ordering[cut_index + 1 :]
-    sub = adj[np.ix_(left, right)]
-    return gf2_rank(sub)
-
 
 def evaluate_ordering(graph: nx.Graph, ordering: list[int]) -> tuple[int, int]:
     """Evaluate the number of emitters for a specific vertex ordering.

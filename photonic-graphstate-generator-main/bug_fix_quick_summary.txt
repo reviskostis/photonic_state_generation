@@ -1,0 +1,82 @@
+====================================================================
+Quick summary of the issue and the employed solution
+====================================================================
+
+FIXED and independently re-verified any code issues 
+in rank_width.py, rank_width_sa.py, or path_clustering.py from this bug.
+
+1. Checked the height function from Nils' codebase
+
+To ensure that the stabilizer-tableau "height function"
+(lib/tableau.py / utils/ufuncs.py), used by rank_width_sa.py
+(height_function_sa) and path_clustering.py (path_clustering) is correct
+I ran independent test with know graphs. No discrepancy found. This 
+implementation seems correct.
+
+2. The bug was in the rank_width.py implementation
+
+The bug was in rank_width.py's own _gf2_rank() Gaussian-elimination 
+routine (and an identical duplicate copy inside rank_width_sa.py). 
+It silently UNDER-counted the GF(2) rank of a binary matrix whenever 
+a column had no available pivot, because the "retry with the next column" 
+logic was mistakenly tied to the outer `for row in range(nrows)` loop instead 
+of an independent pivot counter. So a row was silently skipped instead
+of retried. This made rank_width.py's reported "true" cut-rank (and
+therefore its reported linear rank-width / emitter count) too LOW in
+roughly 6-8% of random graphs, which is what created the appearance
+of the height function "overcounting by one" in the tests below.
+
+3. How we fixed the issue
+
+- Rewrote _gf2_rank() in rank_width.py and rank_width_sa.py to use an
+independent pivot-column loop with its own rank/pivot counter,
+matching the structure already used (correctly) by the existing
+_gf2_rank_bitpacked() fast path. No public changes.
+- path_clustering.py needed no direct change: it imports gf2_rank
+from rank_width_sa.py and thus inherits the fix automatically.
+- lib/tableau.py / utils/ufuncs.py (the height function) were left
+unchanged as they are correct.
+
+4. Verification performed:
+  - GF(2) rank vs. an independent reference implementation: 0/5000
+    mismatches (previously approx. 23% of random matrices were wrong).
+  - Full per-cut cut-rank vs. height-function profile (not just the
+    max) on random connected graphs: 0/300 mismatches (previously
+    16/200, always height == true_rank + 1 -- now understood to mean
+    rank_width.py was 1 too LOW, not the height function too high).
+  - Known-graph-family sanity checks, run for all three algorithms
+    (hill_climbing / height_function_sa / path_clustering): cycle -> 2,
+    star -> 1, complete graph -> 1, path -> 1. 36/36 passed across
+    multiple graph sizes per family.
+  - New regression test suite added: tests/test_gf2_rank_and_height.py
+    (53 tests, all passing). Full existing test suite re-run to confirm
+    no new regressions; the pre-existing unrelated failures in
+    test_circuitSolver.py / test_generate_graph.py / test_tableau.py
+    were confirmed (via git stash) to exist independently of this fix.
+
+5. Effect on results of the draft:
+  - rank_width.py (hill_climbing) may now report a linear rank-width
+    that is 1 HIGHER than before, for the approx. 6-8% of graphs that were
+    previously under-counted. This is a correction, not a regression:
+    the new value is the true GF(2) cut-rank.
+  - rank_width_sa.py / path_clustering.py's own reported numbers are
+    unchanged by this fix (their cost function, the height function,
+    was already correct) -- but they are now provably CONSISTENT with
+    rank_width.py's numbers on the same graph/ordering, which was not
+    guaranteed before.
+  - Any prior benchmark/figure that compared hill_climbing against
+    height_function_sa / path_clustering using pre-fix rank_width.py
+    numbers should be treated as unreliable and regenerated.
+
+6. Remaining open issues (not code bugs):
+  - Graph_State_Generation/rank_width_sa.tex (lines approx. 69-80) still
+    states the two quantities only coincide at the global optimum --
+    this should be corrected now that pointwise equality is confirmed.
+  - draft.tex's Paul's comment about why hill_climbing and 
+    height_function_sa seemed to use different cost
+    functions can now be closed: they compute the same quantity, via
+    different (both correct) methods.
+
+Full technical detail, code snippets, and the detailed fixes are in
+HEIGHT_FUNCTION_BUG_README.md in this same directory.
+

@@ -58,35 +58,32 @@ def _gf2_rank(matrix: np.ndarray) -> int:
     M = matrix.astype(np.uint8, copy=True)
     nrows, ncols = M.shape
     rank = 0
-    pivot_col = 0
 
-    for row in range(nrows):
-        if pivot_col >= ncols:
+    for pivot_col in range(ncols):
+        if rank >= nrows:
             break
 
-        # Find a pivot in the current column from 'row' downward.
+        # Find a pivot in the current column from 'rank' downward.
         found = False
-        for k in range(row, nrows):
+        for k in range(rank, nrows):
             if M[k, pivot_col]:
                 found = True
-                if k != row:
+                if k != rank:
                     # Swap rows
-                    M[[row, k]] = M[[k, row]]
+                    M[[rank, k]] = M[[k, rank]]
                 break
 
         if not found:
-            pivot_col += 1
-            # Retry the same row with the next column
-            # (implemented via a while loop below instead of recursion)
+            # No pivot in this column: retry the same row against the
+            # next column instead of consuming a row.
             continue
 
         # Eliminate all other 1s in this column
         for k in range(nrows):
-            if k != row and M[k, pivot_col]:
-                M[k] ^= M[row]  # XOR = addition in GF(2)
+            if k != rank and M[k, pivot_col]:
+                M[k] ^= M[rank]  # XOR = addition in GF(2)
 
         rank += 1
-        pivot_col += 1
 
     return rank
 
