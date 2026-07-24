@@ -63,16 +63,21 @@ from optimization_script import run_optimization
 #  USER SETTINGS  (edit these)
 # ─────────────────────────────────────────────────────────────────────────────
 # Number of parallel worker processes.  Override with env-var BENCHMARK_CORES.
-NUM_CORES: int = int(os.environ.get("BENCHMARK_CORES", 2))
+NUM_CORES: int = int(os.environ.get("BENCHMARK_CORES", 1))
 
 # Set to True to only process graphs with < 20 vertices (quick sanity check).
 QUICK_TEST: bool = True
-MAX_VERTICES: int = 500 # 
+MAX_VERTICES: int = 560 # 
 # Where to save results (absolute path).
 RESULTS_DIR: str = "/Users/konstantinosrafailrevis/Desktop/PhD/photonic_state_generation/simulations_data/step4_results_rhg"
 
 # Path to the graph database.
 DB_DIR: str = "step4_rgh_database"
+
+# Which algorithms to run this pass (subset of ALGO_WORKERS keys below).
+# Results are checkpointed per (graph, algo), so restricting this list
+# just skips the others — it won't touch or overwrite their saved results.
+ALGOS_TO_RUN: list[str] = ["lrw"]
 # ─────────────────────────────────────────────────────────────────────────────
 
 SCRIPT_DIR = pathlib.Path(__file__).parent.resolve()
@@ -96,8 +101,17 @@ def edge_reduction_func(input_graph):
     return graph
 
 
+# Optional per-algo filename override for saved results (the algo key itself
+# is unchanged — only the .pkl filename). Lets you version results, e.g. keep
+# the old buggy "lrw" run untouched while a fixed run saves under a new name.
+RESULT_FILENAME: dict[str, str] = {
+    "lrw": "lrw_fix_bug",
+}
+
+
 def _result_path(graph_stem: str, algo: str) -> pathlib.Path:
-    return RESULTS_PATH / graph_stem / f"{algo}.pkl"
+    filename = RESULT_FILENAME.get(algo, algo)
+    return RESULTS_PATH / graph_stem / f"{filename}.pkl"
 
 
 def _save_result(graph_stem: str, algo: str, result: dict) -> None:
@@ -242,7 +256,7 @@ def build_job_list(
         # Apply edge reduction once, shared across all algorithms
         graph_reduced = edge_reduction_func(graph)
 
-        for algo in ALGO_WORKERS:
+        for algo in ALGOS_TO_RUN:
             if _load_result(graph_stem, algo) is not None:
                 skipped += 1
                 continue
@@ -264,7 +278,7 @@ def print_summary(pkl_files: list[pathlib.Path], quick_test: bool) -> None:
         if quick_test and graph.number_of_nodes() >= MAX_VERTICES:
             continue
         stem = pkl_file.stem
-        for algo in ALGO_WORKERS:
+        for algo in ALGOS_TO_RUN:
             res = _load_result(stem, algo)
             if res is None:
                 print(f"{stem:<45} {algo:<12} {'—':>9} {'—':>8} {'—':>8} {'—':>11}")
@@ -277,6 +291,11 @@ def print_summary(pkl_files: list[pathlib.Path], quick_test: bool) -> None:
 
 
 def main() -> None:
+    unknown = set(ALGOS_TO_RUN) - set(ALGO_WORKERS)
+    if unknown:
+        raise ValueError(f"Unknown algo(s) in ALGOS_TO_RUN: {unknown}. "
+                          f"Valid options: {list(ALGO_WORKERS)}")
+
     RESULTS_PATH.mkdir(parents=True, exist_ok=True)
 
     pkl_files = sorted(DB_PATH.glob("*.pkl"))
@@ -289,7 +308,7 @@ def main() -> None:
     print(f"  Graphs DB  : {DB_PATH}")
     print(f"  Results    : {RESULTS_PATH}")
     print(f"  Cores      : {NUM_CORES}")
-    print(f"  Algorithms : {', '.join(ALGO_WORKERS)}")
+    print(f"  Algorithms : {', '.join(ALGOS_TO_RUN)}")
     print(f"{'─'*60}\n")
 
     jobs = build_job_list(pkl_files, QUICK_TEST)
