@@ -1,13 +1,12 @@
-# Photonic Graph State Generatorion: Optimizing the number of emitters
+# Photonic Graph State Generation: Optimizing the number of emitters
 
 A Python codebase for optimizing the generation of photonic graph states using quantum emitters. This repository provides algorithms for minimizing the number of emitters and CNOT gates required to generate arbitrary graph states, with applications in photonic quantum computing and measurement-based quantum computation (MBQC).
 
-> **Acknowledgement:** This repository was based on a codebase shared privately by **Nils Tomke Ottink**, developed during his master thesis. The original code provided the foundation for the stabilizer-tableau manipulation, circuit generation, local-complementation edge-reduction, as well as the SAminLA algorithm for optimzing the number of emitterrs. Subsequent development including the rest of the algorithms for optimizing the number of emitters including rank_width, rank_width_sa and path_clustering as well as the preparation of plenty of datatsets for testing and comparing the afforementioned algorithms was carried afterwards. 
-
+Repository accompanying [the following preprint: 2609.30400](https://arxiv.org/abs/2609.30400)
 
 ## Overview
 
-Photonic graph states are essential resources for measurement-based quantum computing and quantum communication protocols. Generating these states efficiently, so minimising the number of quantum emitters and entangling gates is a key practical challenge. 
+Photonic graph states are essential resources for measurement-based quantum computing and quantum communication protocols. Generating these states efficiently, so as to minimise the number of quantum emitters and entangling gates, is a key practical challenge. 
 
 - **Emission ordering optimization** Four main algorithms are implemented. Namely: SAminLA, rank_width, rank_width_sa and path_clustering
 - **Edge reduction via local complementations** to simplify graphs while preserving LC-equivalence
@@ -24,15 +23,10 @@ Photonic graph states are essential resources for measurement-based quantum comp
 - **Circuit Generation**: Generate [Stim](https://github.com/quantumlib/Stim) circuits for graph state preparation, with optional ZX-calculus optimisation via [PyZX](https://github.com/Quantomatic/pyzx)
 - **Clustering and Decomposition**: Greedy and Kernighan-Lin clustering for hierarchical graph decomposition with cut-rank minimisation
 - **MBQC Graph Generation**: Generate resource-state graphs for Shor's algorithm and Deutsch-Jozsa via [Graphix](https://github.com/TeamGraphix/graphix)
-- **Benchmark Infrastructure**: Parallelised benchmark runners for QECC, RHG, Shor, and random graph databases
+- **Benchmarking **: Parallelised benchmark runners for QECC, RHG, Shor, and random graph databases
 - **Algorithm comparison**: Detailed comparison of every pipeline step to address how modifying each one affects the individual algorithm performance. Compare the algorithms with each other for their best version. The metrics used were the number of emitters, the number of emitter CNOTs, the total gatecount, and the runtime in our machine.
 
 ## Installation
-
-### Prerequisites
-
-- Python >= 3.9
-- pip
 
 ### Dependencies
 
@@ -50,54 +44,6 @@ pip install pyzx cirq
 For MBQC pattern generation (Shor, Deutsch-Jozsa graphs):
 ```bash
 pip install graphix
-```
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/arr0w-hs/graph_state_optimization.git
-cd graph_state_optimization
-```
-
-## Project Structure
-
-```
-photonic_state_generation/
-├── photonic-graphstate-generator-main/   # Main codebase
-│   ├── lib/                              # Core library modules
-│   │   ├── circuitSolver.py              # Time-reversed circuit generation (Li et al. 2022)
-│   │   ├── generate_graph.py             # Graph-state utilities and MinLA SA
-│   │   ├── tableau.py                    # Stabilizer tableau representation & operations
-│   │   ├── LC_edge_reduction.py          # Local complementation edge reduction
-│   │   ├── graphs.py                     # Predefined graph types & encoded graph-codes
-│   │   └── typeIIfusions.py              # Type II fusion gate primitives
-│   ├── utils/                            # Utility functions
-│   │   ├── ufuncs.py                     # Standalone tableau and height-function helpers
-│   │   └── zx_graph.py                   # ZX-calculus optimisation (Stim and PyZX)
-│   ├── data/                             # Entanglement class databases (less than 10 qubits)
-│   ├── tests/                            # Unit tests for core modules
-│   ├── examples/                         # Example and demo notebooks
-│   ├── notebooks/                        # Analysis and comparison notebooks
-│   ├── optimization_script.py            # Main optimisation pipeline for circuit extraction and SaminLA algorithm
-│   ├── path_clustering.py               # Path-based LRW approximation
-│   ├── graph_utils.py                    # GF(2) linear algebra & cut-rank
-│   ├── rank_width.py                     # LRW via greedy heuristics (spectral, RCM, min-degree)
-│   ├── rank_width_sa.py                  # LRW via simulated annealing
-│   ├── qecc_runs.py                      # QECC benchmark runner
-│   ├── rhg_runs.py                       # RHG lattice benchmark runner
-│   ├── runs_shor_full.py                 # Shor algorithm benchmark runner
-│   └── save_shor_graphs.py              # Shor resource-state graph generator
-├── simulations_data/                     # Benchmark results and logs
-│   ├── step2_results/                    # Phase 2 (edge reduction) results
-│   ├── step4_results/                    # Phase 4 (full pipeline) results
-│   ├── step4_results_rhg/                # RHG lattice results
-│   ├── step4_results_shor_red/           # Shor algorithm results
-│   └── *.txt / *.pkl                     # Per-algorithm metric traces
-└── figures/                              # Generated figures and plots
-    ├── algos_comparison/                 # Algorithm comparison plots
-    ├── cluster_states/                   # Cluster state visualisations
-    ├── effect_of_edge_reduction/         # Edge reduction analysis
-    └── step3/ , step4/                   # Pipeline stage plots
 ```
 
 ## Quick Start
@@ -206,13 +152,6 @@ print(f"Path clustering LRW: {cost}")
 | `path_clustering.py` | Polynomial-time LRW heuristic: longest-path extraction -> cluster construction -> inter-cluster TSP -> intra-cluster ordering -> boundary SA refinement. |
 | `graph_utils.py` | GF(2) linear algebra: biadjacency matrices, cut-rank, and Gaussian elimination over GF(2). |
 
-### Utilities
-
-| Module | Description |
-|--------|-------------|
-| `utils/ufuncs.py` | Standalone helpers for tableau ↔ Pauli-string conversion, echelon transform, height function, and bigram extraction. |
-| `utils/zx_graph.py` | ZX-calculus integration: Stim ↔ Cirq ↔ PyZX conversion and basic ZX optimisations. |
-
 ### Benchmark Runners
 
 | Module | Description |
@@ -253,33 +192,11 @@ python -m pytest tests/
 | `qec_and_rhg_plotting.ipynb` | QECC and RHG benchmark result plots |
 | `large_algo_comparison_plotting.ipynb` | Large-scale comparison of the best version of the final algorithms with the random labelling as well as best algorithm determination. |
 
-## Data
-
-### Entanglement Class Databases (`data/`)
-- `combined_classes.txt` — Combined data from [Cabello et al.](https://arxiv.org/abs/0705.0998) for graphs ≤10 qubits
-- `linear-rank-width_LC-classes.txt` — LC-class classification by number of emitters
-- `entanglement_class_*.txt` — Individual entanglement classes by qubit count (2–10)
-
-### Graph Databases
-- `graphs_database_paul/` — QECC graph collection
-- `shor_graph_database/` — Shor algorithm resource-state graphs
-- `step4_rgh_database/` — RHG lattice graphs
-- `cater_database/` - Catepilar graphs database
--`circle_database/` - Circle graphs database
-- `dj_graphs/` — Deutsch-Jozsa algorithm graphs
-- `random_graph_db/` — Random Erdos-Renyi graph instances
-
-### Simulation Results (`simulations_data/`)
-Benchmark outputs organised by algorithm and graph family, including emitter counts, CNOT counts, and node sizes for all algorithm variants (path clustering, rank width, rank width + SA, SA + MinLA).
-
 ## References
 
 - Li et al. "Photonic resource state generation from a minimal number of quantum emitters." [Li et al. (2022)](https://www.nature.com/articles/s41534-022-00522-6)
 - Takou et al. "Optimization complexity and resource minimization of emitter-based photonic graph state generation protocols" [Takou et al. (2025)](https://www.nature.com/articles/s41534-025-01056-3)
 
-## Acknowledgements
-
-This project builds upon a codebase originally developed and shared privately by **Nils Tomke Ottink**. The original code was developed for his Master thesis . The original code provided the core stabilizer-tableau infrastructure, circuit generation algorithm, and local-complementation edge-reduction methods.
 
 ## License
 
@@ -287,5 +204,5 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ## Citation
 
-Will be added after the paper is uploaded in arxiv
+ [arxiv link: https://arxiv.org/abs/2609.30400](https://arxiv.org/abs/2609.30400)
 
