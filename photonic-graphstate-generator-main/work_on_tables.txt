@@ -1,0 +1,917 @@
+previous tables
+
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.4}
+\caption{Testing our algorithms on several QECC families. HC denotes \texttt{hill\_climbing}, HFSA denotes \texttt{height\_function\_sa}, PC denotes \texttt{path\_clustering}, and MLSA denotes \texttt{min\_la\_sa}.}
+\label{tab:qecc-init}
+
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}ccccccc@{}}
+\toprule
+QECC & $|V|$ & $|E|$ & Alg. & Emit. & CNOTs & Gates \\
+\midrule
+
+Steane & 7 & 12 & HC & 3 & 5 & 21 \\
+Steane & 7 & 12 & HFSA & 3 & 5 & 19 \\
+Steane & 7 & 12 & PC & 3 & 5 & 19 \\
+Steane & 7 & 12 & MLSA & 3 & 5 & 19 \\
+
+\hline
+Shor & 9 & 6 & HC & 1 & 0 & 20 \\
+Shor & 9 & 6 & HFSA & 1 & 0 & 20 \\
+Shor & 9 & 6 & PC & 1 & 0 & 20 \\
+Shor & 9 & 6 & MLSA & 1 & 0 & 14 \\
+
+\hline
+$\mathrm{HGP}(34,4)$ & 34 & 81 & HC & 6 & 31 & 95 \\
+$\mathrm{HGP}(34,4)$ & 34 & 81 & HFSA & 6 & 31 & 95 \\
+$\mathrm{HGP}(34,4)$ & 34 & 81 & PC & 6 & 31 & 95 \\
+$\mathrm{HGP}(34,4)$ & 34 & 81 & MLSA & 7 & 35 & 107 \\
+
+\hline
+$\mathrm{HGP}(52,4)$ & 52 & 164 & HC & 10 & 88 & 177 \\
+$\mathrm{HGP}(52,4)$ & 52 & 164 & HFSA & 11 & 95 & 190 \\
+$\mathrm{HGP}(52,4)$ & 52 & 164 & PC & 9 & 81 & 182 \\
+$\mathrm{HGP}(52,4)$ & 52 & 164 & MLSA & 11 & 87 & 183 \\
+
+\hline
+$\mathrm{BB}[[72,12,6]]$ & 72 & 1283 & HC & 33 & 1127 & 2191 \\
+$\mathrm{BB}[[72,12,6]]$ & 72 & 1283 & HFSA & 32 & 1075 & 2044 \\
+$\mathrm{BB}[[72,12,6]]$ & 72 & 1283 & PC & 32 & 1206 & 2381 \\
+$\mathrm{BB}[[72,12,6]]$ & 72 & 1283 & MLSA & 35 & 1179 & 2212 \\
+
+\hline
+$\mathrm{HGP}(80,16)$ & 80 & 453 & HC & 23 & 211 & 508 \\
+$\mathrm{HGP}(80,16)$ & 80 & 453 & HFSA & 17 & 255 & 594 \\
+$\mathrm{HGP}(80,16)$ & 80 & 453 & PC & 16 & 270 & 627 \\
+$\mathrm{HGP}(80,16)$ & 80 & 453 & MLSA & 19 & 243 & 542 \\
+
+\hline
+$\mathrm{BB}[[90,8,10]]$ & 90 & 1347 & HC & 42 & 1568 & 2814 \\
+$\mathrm{BB}[[90,8,10]]$ & 90 & 1347 & HFSA & 35 & 1260 & 2434 \\
+$\mathrm{BB}[[90,8,10]]$ & 90 & 1347 & PC & 33 & 1213 & 2345 \\
+$\mathrm{BB}[[90,8,10]]$ & 90 & 1347 & MLSA & 42 & 1288 & 2380 \\
+
+\hline
+$\mathrm{HGP}(106,16)$ & 106 & 542 & HC & 24 & 408 & 817 \\
+$\mathrm{HGP}(106,16)$ & 106 & 542 & HFSA & 24 & 408 & 817 \\
+$\mathrm{HGP}(106,16)$ & 106 & 542 & PC & 24 & 408 & 817 \\
+$\mathrm{HGP}(106,16)$ & 106 & 542 & MLSA & 24 & 326 & 707 \\
+
+\hline
+$\mathrm{BB}[[108,8,10]]$ & 108 & 2281 & HC & 51 & 2512 & 4577 \\
+$\mathrm{BB}[[108,8,10]]$ & 108 & 2281 & HFSA & 39 & 1905 & 3742 \\
+$\mathrm{BB}[[108,8,10]]$ & 108 & 2281 & PC & 43 & 2291 & 4507 \\
+$\mathrm{BB}[[108,8,10]]$ & 108 & 2281 & MLSA & 52 & 2465 & 4512 \\
+
+\hline
+$\mathrm{HGP}(130,4)$ & 130 & 1080 & HC & 19 & 301 & 629 \\
+$\mathrm{HGP}(130,4)$ & 130 & 1080 & HFSA & 21 & 337 & 685 \\
+$\mathrm{HGP}(130,4)$ & 130 & 1080 & PC & 21 & 337 & 685 \\
+$\mathrm{HGP}(130,4)$ & 130 & 1080 & MLSA & 24 & 346 & 706 \\
+
+\hline
+$\mathrm{BB}[[144,12,12]]$ & 144 & 4928 & HC & 68 & 4036 & 7035 \\
+$\mathrm{BB}[[144,12,12]]$ & 144 & 4928 & HFSA & 53 & 3268 & 6174 \\
+$\mathrm{BB}[[144,12,12]]$ & 144 & 4928 & PC & 55 & 3684 & 6867 \\
+$\mathrm{BB}[[144,12,12]]$ & 144 & 4928 & MLSA & 69 & 4335 & 7870 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.4}
+\caption{Testing our algorithms on several QECC families after a logical Bell pair is imposed. HC denotes \texttt{hill\_climbing}, HFSA denotes \texttt{height\_function\_sa}, PC denotes \texttt{path\_clustering}, and MLSA denotes \texttt{min\_la\_sa}.}
+\label{tab:qecc-bell}
+
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}ccccccc@{}}
+\toprule
+Bell QECC & $|V|$ & $|E|$ & Alg. & Emit. & CNOTs & Gates \\
+\midrule
+
+Steane & 14 & 33 &HC & 3 & 19 & 60 \\
+Steane & 14 & 33 & HFSA & 3 & 19 & 60 \\
+Steane & 14 & 33 & PC & 3 & 19 & 60 \\
+Steane & 14 & 33 &MLSA & 3 & 16 & 53 \\
+\hline
+Shor & 18 & 21 &HC & 3 & 3 & 29 \\
+Shor & 18 & 21 & HFSA & 2 & 4 & 35 \\
+Shor & 18 & 21 & PC & 3 & 3 & 29 \\
+Shor & 18 & 21 &MLSA & 3 & 4 & 32 \\
+\hline
+
+$\mathrm{HGP}(34,4)$ & 68 & 306 &HC & 17 & 151 & 359 \\
+$\mathrm{HGP}(34,4)$ & 68 & 306 & HFSA & 14 & 174 & 444 \\
+$\mathrm{HGP}(34,4)$ & 68 & 306 & PC & 15 & 167 & 410 \\
+$\mathrm{HGP}(34,4)$ & 68 & 306 &MLSA & 23 & 265 & 533 \\
+\hline
+
+$\mathrm{HGP}(52,4)$ & 104 & 466 &HC & 16 & 267 & 549 \\
+$\mathrm{HGP}(52,4)$ & 104 & 466 & HFSA & 16 & 267 & 549 \\
+$\mathrm{HGP}(52,4)$ & 104 & 466 & PC & 16 & 267 & 549 \\
+$\mathrm{HGP}(52,4)$ & 104 & 466 &MLSA & 17 & 304 & 623 \\
+\hline
+
+$\mathrm{BB}[[72,12,6]]$ & 144 & 7164 &HC & 50 & 3560 & 6549 \\
+$\mathrm{BB}[[72,12,6]]$ & 144 & 7164 & HFSA & 51 & 3711 & 6921 \\
+$\mathrm{BB}[[72,12,6]]$ & 144 & 7164 & PC & 51 & 3711 & 6921 \\
+$\mathrm{BB}[[72,12,6]]$ & 144 & 7164 &MLSA & 49 & 3510 & 6404 \\
+\hline
+
+$\mathrm{HGP}(80,16)$ & 160 & 1874 &HC & 46 & 1484 & 2552 \\
+$\mathrm{HGP}(80,16)$ & 160 & 1874 & HFSA & 41 & 1392 & 2575 \\
+$\mathrm{HGP}(80,16)$ & 160 & 1874 & PC & 40 & 1147 & 2103 \\
+$\mathrm{HGP}(80,16)$ & 160 & 1874 &MLSA & 48 & 1536 & 2727 \\
+\hline
+
+$\mathrm{BB}[[90,8,10]]$ & 180 & 7266 &HC & 56 & 4433 & 7875 \\
+$\mathrm{BB}[[90,8,10]]$ & 180 & 7266 & HFSA & 54 & 4728 & 8985 \\
+$\mathrm{BB}[[90,8,10]]$ & 180 & 7266 & PC & 53 & 4308 & 7901 \\
+$\mathrm{BB}[[90,8,10]]$ & 180 & 7266 &MLSA & 55 & 4242 & 7753 \\
+\hline
+
+$\mathrm{HGP}(106,16)$ & 212 & 1741 &HC & 50 & 1722 & 2943 \\
+$\mathrm{HGP}(106,16)$ & 212 & 1741 & HFSA & 50 & 1722 & 2943 \\
+$\mathrm{HGP}(106,16)$ & 212 & 1741 & PC & 50 & 1722 & 2943 \\
+$\mathrm{HGP}(106,16)$ & 212 & 1741 &MLSA & 48 & 1271 & 2392 \\
+\hline
+
+$\mathrm{BB}[[108,8,10]]$ & 216 & 15014 &HC & 82 & 8969 & 16479 \\
+$\mathrm{BB}[[108,8,10]]$ & 216 & 15014 & HFSA & 83 & 9165 & 16980 \\
+$\mathrm{BB}[[108,8,10]]$ & 216 & 15014 & PC & 83 & 9165 & 16980 \\
+$\mathrm{BB}[[108,8,10]]$ & 216 & 15014 &MLSA & 84 & 8713 & 15530 \\
+\hline
+
+$\mathrm{HGP}(130,4)$ & 260 & 2416 &HC & 34 & 964 & 1911 \\
+$\mathrm{HGP}(130,4)$ & 260 & 2416 & HFSA & 35 & 923 & 1822 \\
+$\mathrm{HGP}(130,4)$ & 260 & 2416 & PC & 35 & 923 & 1822 \\
+$\mathrm{HGP}(130,4)$ & 260 & 2416 &MLSA & 40 & 1270 & 2504 \\
+\hline
+
+$\mathrm{BB}[[144,12,12]]$ & 288 & 28888 &HC & 102 & 14967 & 27424 \\
+$\mathrm{BB}[[144,12,12]]$ & 288 & 28888 & HFSA & 102 & 14617 & 26590 \\
+$\mathrm{BB}[[144,12,12]]$ & 288 & 28888 & PC & 102 & 14617 & 26590 \\
+$\mathrm{BB}[[144,12,12]]$ & 288 & 28888 &MLSA & 98 & 13598 & 23192 \\
+\hline
+
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+
+\begin{table*}[t]
+% \tiny
+\setlength{\tabcolsep}{2.6pt}
+\renewcommand{\arraystretch}{1.2}
+\caption{Testing our algorithms on several QECC families after $l_f$ foliations imposed. HC denotes \texttt{hill\_climbing}, HFSA denotes \texttt{height\_function\_sa}, PC denotes \texttt{path\_clustering}, and MLSA denotes \texttt{min\_la\_sa}.}
+
+\label{tab:qecc-fol}
+
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\begin{tabular}{@{}cccccccc@{}}
+\toprule
+$l_f$ QECC & $|V|$ & $|E|$ & Alg. & Emit. & CNOTs & Gates \\
+\midrule
+1 Steane & 20 & 31 & HC & 5 & 22 & 63 \\
+
+1 Steane & 20 & 31 & HFSA & 5 & 22 & 63 \\
+
+1 Steane & 20 & 31 & PC & 5 & 22 & 63 \\
+
+1 Steane & 20 & 31 &MLSA & 6 & 20 & 67 \\
+
+\hline
+
+1 Shor & 26 & 33 & HC & 3 & 13 & 64 \\
+
+1 Shor & 26 & 33 & HFSA & 4 & 15 & 63 \\
+
+1 Shor & 26 & 33 & PC & 4 & 15 & 68 \\
+
+1 Shor & 26 & 33 &MLSA & 3 & 15 & 69 \\
+\hline
+
+3 Steane & 60 & 107 & HC & 7 & 92 & 173 \\
+
+3 Steane & 60 & 107 & HFSA & 7 & 92 & 173 \\
+
+3 Steane & 60 & 107 & PC & 7 & 92 & 173 \\
+
+3 Steane & 60 & 107 &MLSA & 7 & 90 & 173 \\
+
+\hline
+
+3 Shor & 78 & 117 & HC & 7 & 82 & 240 \\
+
+3 Shor & 78 & 117 & HFSA & 8 & 82 & 238 \\
+
+3 Shor & 78 & 117 & PC & 13 & 98 & 285 \\
+
+3 Shor & 78 & 117 &MLSA & 10 & 68 & 173 \\
+
+\hline
+
+1 $\mathrm{HGP}(34,4)$ & 98 & 178 & HC & 15 & 136 & 290 \\
+
+1 $\mathrm{HGP}(34,4)$ & 98 & 178 & HFSA & 15 & 136 & 290 \\
+
+1 $\mathrm{HGP}(34,4)$ & 98 & 178 & PC & 15 & 168 & 373 \\
+
+1 $\mathrm{HGP}(34,4)$ & 98 & 178 &MLSA & 15 & 147 & 314 \\
+
+\hline
+
+5 Steane & 100 & 183 & HC & 7 & 173 & 294 \\
+
+5 Steane & 100 & 183 & HFSA & 7 & 173 & 294 \\
+
+5 Steane & 100 & 183 & PC & 7 & 173 & 294 \\
+
+5 Steane & 100 & 183 &MLSA & 8 & 150 & 274 \\
+
+\hline
+
+5 Shor & 130 & 201 & HC & 9 & 140 & 293 \\
+
+5 Shor & 130 & 201 & HFSA & 9 & 140 & 293 \\
+
+5 Shor & 130 & 201 & PC & 22 & 155 & 459 \\
+
+5 Shor & 130 & 201 &MLSA & 9 & 133 & 284 \\
+
+\hline
+
+1 $\mathrm{HGP}(52,4)$ & 152 & 292 & HC & 18 & 259 & 589 \\
+
+1 $\mathrm{HGP}(52,4)$ & 152 & 292 & HFSA & 18 & 259 & 589 \\
+
+1 $\mathrm{HGP}(52,4)$ & 152 & 292 & PC & 18 & 259 & 589 \\
+
+1 $\mathrm{HGP}(52,4)$ & 152 & 292 &MLSA & 28 & 256 & 525 \\
+
+\hline
+
+1 $\mathrm{BB}[[72,12,6]]$ & 216 & 504 & HC & 67 & 1009 & 1674 \\
+
+1 $\mathrm{BB}[[72,12,6]]$ & 216 & 504 & HFSA & 64 & 986 & 1719 \\
+
+1 $\mathrm{BB}[[72,12,6]]$ & 216 & 504 & PC & 64 & 1112 & 1985 \\
+
+1 $\mathrm{BB}[[72,12,6]]$ & 216 & 504 &MLSA & 72 & 774 & 1288 \\
+
+
+
+\bottomrule
+\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\begin{tabular}{@{}cccccccc@{}}
+\toprule
+$l_f$ QECC & $|V|$ & $|E|$ & Alg. & Emit. & CNOTs & Gates \\
+\midrule
+
+
+
+
+
+1 $\mathrm{HGP}(80,16)$ & 224 & 368 & HC & 26 & 240 & 694 \\
+
+1 $\mathrm{HGP}(80,16)$ & 224 & 368 & HFSA & 26 & 240 & 694 \\
+
+1 $\mathrm{HGP}(80,16)$ & 224 & 368 & PC & 43 & 387 & 948 \\
+
+1 $\mathrm{HGP}(80,16)$ & 224 & 368 &MLSA & 31 & 289 & 660 \\
+
+\hline
+
+1 $\mathrm{BB}[[90,8,10]]$ & 270 & 630 & HC & 67 & 1012 & 1799 \\
+
+1 $\mathrm{BB}[[90,8,10]]$ & 270 & 630 & HFSA & 67 & 1012 & 1799 \\
+
+1 $\mathrm{BB}[[90,8,10]]$ & 270 & 630 & PC & 67 & 1012 & 1799 \\
+
+1 $\mathrm{BB}[[90,8,10]]$ & 270 & 630 &MLSA & 90 & 1139 & 1787 \\
+
+\hline
+
+3 $\mathrm{HGP}(34,4)$ & 294 & 602 & HC & 34 & 780 & 1194 \\
+
+3 $\mathrm{HGP}(34,4)$ & 294 & 602 & HFSA & 34 & 780 & 1194 \\
+
+3 $\mathrm{HGP}(34,4)$ & 294 & 602 & PC & 42 & 648 & 1126 \\
+
+3 $\mathrm{HGP}(34,4)$ & 294 & 602 &MLSA & 34 & 673 & 1077 \\
+
+\hline
+
+1 $\mathrm{HGP}(106,16)$ & 302 & 526 & HC & 36 & 449 & 966 \\
+
+1 $\mathrm{HGP}(106,16)$ & 302 & 526 & HFSA & 36 & 449 & 966 \\
+
+1 $\mathrm{HGP}(106,16)$ & 302 & 526 & PC & 44 & 524 & 1050 \\
+
+1 $\mathrm{HGP}(106,16)$ & 302 & 526 &MLSA & 78 & 492 & 1189 \\
+
+\hline
+
+1 $\mathrm{BB}[[108,8,10]]$ & 324 & 756 & HC & 69 & 1429 & 2505 \\
+
+1 $\mathrm{BB}[[108,8,10]]$ & 324 & 756 & HFSA & 72 & 1550 & 2686 \\
+
+1 $\mathrm{BB}[[108,8,10]]$ & 324 & 756 & PC & 72 & 1550 & 2686 \\
+
+1 $\mathrm{BB}[[108,8,10]]$ & 324 & 756 &MLSA & 108 & 1151 & 1875 \\
+
+\hline
+
+1 $\mathrm{HGP}(130,4)$ & 386 & 802 & HC & 32 & 742 & 1422 \\
+
+1 $\mathrm{HGP}(130,4)$ & 386 & 802 & HFSA & 32 & 742 & 1422 \\
+
+1 $\mathrm{HGP}(130,4)$ & 386 & 802 & PC & 32 & 742 & 1422 \\
+
+1 $\mathrm{HGP}(130,4)$ & 386 & 802 &MLSA & 114 & 828 & 1669 \\
+
+\hline
+
+1 $\mathrm{BB}[[144,12,12]]$ & 432 & 1008 & HC & 84 & 1440 & 2544 \\
+
+1 $\mathrm{BB}[[144,12,12]]$ & 432 & 1008 & HFSA & 84 & 1440 & 2544 \\
+
+1 $\mathrm{BB}[[144,12,12]]$ & 432 & 1008 & PC & 84 & 1440 & 2544 \\
+
+1 $\mathrm{BB}[[144,12,12]]$ & 432 & 1008 &MLSA & 144 & 1796 & 2836 \\
+
+\hline
+
+3 $\mathrm{HGP}(52,4)$ & 456 & 980 & HC & 45 & 1090 & 2084 \\
+
+3 $\mathrm{HGP}(52,4)$ & 456 & 980 & HFSA & 46 & 1015 & 2009 \\
+
+3 $\mathrm{HGP}(52,4)$ & 456 & 980 & PC & 50 & 1014 & 2089 \\
+
+3 $\mathrm{HGP}(52,4)$ & 456 & 980 &MLSA & 53 & 1030 & 1649 \\
+
+\hline
+
+5 $\mathrm{HGP}(34,4)$ & 490 & 1026 & HC & 34 & 1219 & 1831 \\
+
+5 $\mathrm{HGP}(34,4)$ & 490 & 1026 & HFSA & 34 & 1219 & 1831 \\
+
+5 $\mathrm{HGP}(34,4)$ & 490 & 1026 & PC & 87 & 1323 & 2178 \\
+
+5 $\mathrm{HGP}(34,4)$ & 490 & 1026 &MLSA & 35 & 1055 & 1678 \\
+
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{table*}
+
+
+new tables
+
+\begin{longtable}{lrrrrrr}
+  \caption{QEC benchmark results — 40 completed graphs × 4 algorithms.} \label{tab:qec_results} \\
+  \toprule
+  \textbf{Graph} & \textbf{|V|} & \textbf{|E|} & \textbf{Algorithm} & \textbf{Emitters} & \textbf{CNOTs} & \textbf{Gates} \\
+  \midrule
+  \endfirsthead
+  \multicolumn{7}{c}{\tablename\ \thetable{} (continued)} \\
+  \toprule
+  \textbf{Graph} & \textbf{|V|} & \textbf{|E|} & \textbf{Algorithm} & \textbf{Emitters} & \textbf{CNOTs} & \textbf{Gates} \\
+  \midrule
+  \endhead
+  \midrule \multicolumn{7}{r}{\textit{continued on next page}} \\
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  init\_0\_steane & 7 & 12 & hill\_climbing & 3 & 5 & 19 \\
+  init\_0\_steane & 7 & 12 & height\_function\_sa & 3 & 5 & 19 \\
+  init\_0\_steane & 7 & 12 & path\_clustering & 3 & 5 & 19 \\
+  init\_0\_steane & 7 & 12 & min\_la\_sa & 3 & 5 & 19 \\
+  init\_0\_shor & 9 & 6 & hill\_climbing & 1 & 0 & 20 \\
+  init\_0\_shor & 9 & 6 & height\_function\_sa & 1 & 0 & 20 \\
+  init\_0\_shor & 9 & 6 & path\_clustering & 1 & 0 & 20 \\
+  init\_0\_shor & 9 & 6 & min\_la\_sa & 1 & 0 & 14 \\
+  bell\_steane & 14 & 33 & hill\_climbing & 3 & 17 & 54 \\
+  bell\_steane & 14 & 33 & height\_function\_sa & 3 & 19 & 60 \\
+  bell\_steane & 14 & 33 & path\_clustering & 3 & 19 & 60 \\
+  bell\_steane & 14 & 33 & min\_la\_sa & 3 & 16 & 53 \\
+  bell\_shor & 18 & 21 & hill\_climbing & 3 & 3 & 29 \\
+  bell\_shor & 18 & 21 & height\_function\_sa & 2 & 4 & 35 \\
+  bell\_shor & 18 & 21 & path\_clustering & 3 & 3 & 29 \\
+  bell\_shor & 18 & 21 & min\_la\_sa & 3 & 4 & 32 \\
+  foliation\_1\_steane & 20 & 31 & hill\_climbing & 5 & 22 & 63 \\
+  foliation\_1\_steane & 20 & 31 & height\_function\_sa & 5 & 22 & 63 \\
+  foliation\_1\_steane & 20 & 31 & path\_clustering & 5 & 22 & 63 \\
+  foliation\_1\_steane & 20 & 31 & min\_la\_sa & 6 & 20 & 67 \\
+  foliation\_1\_shor & 26 & 33 & hill\_climbing & 3 & 13 & 64 \\
+  foliation\_1\_shor & 26 & 33 & height\_function\_sa & 4 & 15 & 63 \\
+  foliation\_1\_shor & 26 & 33 & path\_clustering & 4 & 15 & 68 \\
+  foliation\_1\_shor & 26 & 33 & min\_la\_sa & 3 & 15 & 69 \\
+  init\_0\_hgp\_code\_34\_4 & 34 & 81 & hill\_climbing & 7 & 38 & 91 \\
+  init\_0\_hgp\_code\_34\_4 & 34 & 81 & height\_function\_sa & 6 & 31 & 95 \\
+  init\_0\_hgp\_code\_34\_4 & 34 & 81 & path\_clustering & 6 & 31 & 95 \\
+  init\_0\_hgp\_code\_34\_4 & 34 & 81 & min\_la\_sa & 7 & 35 & 107 \\
+  init\_0\_hgp\_code\_52\_4 & 52 & 164 & hill\_climbing & 10 & 88 & 177 \\
+  init\_0\_hgp\_code\_52\_4 & 52 & 164 & height\_function\_sa & 11 & 95 & 190 \\
+  init\_0\_hgp\_code\_52\_4 & 52 & 164 & path\_clustering & 9 & 81 & 182 \\
+  init\_0\_hgp\_code\_52\_4 & 52 & 164 & min\_la\_sa & 11 & 87 & 183 \\
+  foliation\_3\_steane & 60 & 107 & hill\_climbing & 7 & 98 & 175 \\
+  foliation\_3\_steane & 60 & 107 & height\_function\_sa & 7 & 92 & 173 \\
+  foliation\_3\_steane & 60 & 107 & path\_clustering & 7 & 92 & 173 \\
+  foliation\_3\_steane & 60 & 107 & min\_la\_sa & 7 & 90 & 173 \\
+  bell\_hgp\_code\_34\_4 & 68 & 306 & hill\_climbing & 14 & 145 & 324 \\
+  bell\_hgp\_code\_34\_4 & 68 & 306 & height\_function\_sa & 14 & 174 & 444 \\
+  bell\_hgp\_code\_34\_4 & 68 & 306 & path\_clustering & 15 & 167 & 410 \\
+  bell\_hgp\_code\_34\_4 & 68 & 306 & min\_la\_sa & 23 & 265 & 533 \\
+  init\_0\_bb\_code\_[[72,12,6]] & 72 & 1283 & hill\_climbing & 33 & 1127 & 2191 \\
+  init\_0\_bb\_code\_[[72,12,6]] & 72 & 1283 & height\_function\_sa & 32 & 1075 & 2044 \\
+  init\_0\_bb\_code\_[[72,12,6]] & 72 & 1283 & path\_clustering & 32 & 1206 & 2381 \\
+  init\_0\_bb\_code\_[[72,12,6]] & 72 & 1283 & min\_la\_sa & 35 & 1179 & 2212 \\
+  foliation\_3\_shor & 78 & 117 & hill\_climbing & 7 & 84 & 240 \\
+  foliation\_3\_shor & 78 & 117 & height\_function\_sa & 8 & 82 & 238 \\
+  foliation\_3\_shor & 78 & 117 & path\_clustering & 13 & 98 & 285 \\
+  foliation\_3\_shor & 78 & 117 & min\_la\_sa & 10 & 68 & 173 \\
+  init\_0\_hgp\_code\_80\_16 & 80 & 453 & hill\_climbing & 21 & 240 & 531 \\
+  init\_0\_hgp\_code\_80\_16 & 80 & 453 & height\_function\_sa & 17 & 255 & 594 \\
+  init\_0\_hgp\_code\_80\_16 & 80 & 453 & path\_clustering & 16 & 270 & 627 \\
+  init\_0\_hgp\_code\_80\_16 & 80 & 453 & min\_la\_sa & 19 & 243 & 542 \\
+  init\_0\_bb\_code\_[[90,8,10]] & 90 & 1347 & hill\_climbing & 40 & 1216 & 2177 \\
+  init\_0\_bb\_code\_[[90,8,10]] & 90 & 1347 & height\_function\_sa & 35 & 1260 & 2434 \\
+  init\_0\_bb\_code\_[[90,8,10]] & 90 & 1347 & path\_clustering & 33 & 1213 & 2345 \\
+  init\_0\_bb\_code\_[[90,8,10]] & 90 & 1347 & min\_la\_sa & 42 & 1288 & 2380 \\
+  foliation\_1\_hgp\_code\_34\_4 & 98 & 178 & hill\_climbing & 15 & 136 & 290 \\
+  foliation\_1\_hgp\_code\_34\_4 & 98 & 178 & height\_function\_sa & 15 & 136 & 290 \\
+  foliation\_1\_hgp\_code\_34\_4 & 98 & 178 & path\_clustering & 15 & 168 & 373 \\
+  foliation\_1\_hgp\_code\_34\_4 & 98 & 178 & min\_la\_sa & 15 & 147 & 314 \\
+  foliation\_5\_steane & 100 & 183 & hill\_climbing & 7 & 175 & 294 \\
+  foliation\_5\_steane & 100 & 183 & height\_function\_sa & 7 & 173 & 294 \\
+  foliation\_5\_steane & 100 & 183 & path\_clustering & 7 & 173 & 294 \\
+  foliation\_5\_steane & 100 & 183 & min\_la\_sa & 8 & 150 & 274 \\
+  bell\_hgp\_code\_52\_4 & 104 & 466 & hill\_climbing & 16 & 267 & 549 \\
+  bell\_hgp\_code\_52\_4 & 104 & 466 & height\_function\_sa & 16 & 267 & 549 \\
+  bell\_hgp\_code\_52\_4 & 104 & 466 & path\_clustering & 16 & 267 & 549 \\
+  bell\_hgp\_code\_52\_4 & 104 & 466 & min\_la\_sa & 17 & 304 & 623 \\
+  init\_0\_hgp\_code\_106\_16 & 106 & 542 & hill\_climbing & 22 & 382 & 769 \\
+  init\_0\_hgp\_code\_106\_16 & 106 & 542 & height\_function\_sa & 24 & 408 & 817 \\
+  init\_0\_hgp\_code\_106\_16 & 106 & 542 & path\_clustering & 24 & 408 & 817 \\
+  init\_0\_hgp\_code\_106\_16 & 106 & 542 & min\_la\_sa & 24 & 326 & 707 \\
+  init\_0\_bb\_code\_[[108,8,10]] & 108 & 2281 & hill\_climbing & 50 & 2474 & 4535 \\
+  init\_0\_bb\_code\_[[108,8,10]] & 108 & 2281 & height\_function\_sa & 39 & 1905 & 3742 \\
+  init\_0\_bb\_code\_[[108,8,10]] & 108 & 2281 & path\_clustering & 43 & 2291 & 4507 \\
+  init\_0\_bb\_code\_[[108,8,10]] & 108 & 2281 & min\_la\_sa & 52 & 2465 & 4512 \\
+  foliation\_5\_shor & 130 & 201 & hill\_climbing & 9 & 139 & 292 \\
+  foliation\_5\_shor & 130 & 201 & height\_function\_sa & 9 & 140 & 293 \\
+  foliation\_5\_shor & 130 & 201 & path\_clustering & 22 & 155 & 459 \\
+  foliation\_5\_shor & 130 & 201 & min\_la\_sa & 9 & 133 & 284 \\
+  init\_0\_hgp\_code\_130\_4 & 130 & 1080 & hill\_climbing & 17 & 341 & 687 \\
+  init\_0\_hgp\_code\_130\_4 & 130 & 1080 & height\_function\_sa & 21 & 337 & 685 \\
+  init\_0\_hgp\_code\_130\_4 & 130 & 1080 & path\_clustering & 21 & 337 & 685 \\
+  init\_0\_hgp\_code\_130\_4 & 130 & 1080 & min\_la\_sa & 24 & 346 & 706 \\
+  bell\_bb\_code\_[[72,12,6]] & 144 & 7164 & hill\_climbing & 49 & 3474 & 6211 \\
+  bell\_bb\_code\_[[72,12,6]] & 144 & 7164 & height\_function\_sa & 51 & 3711 & 6921 \\
+  bell\_bb\_code\_[[72,12,6]] & 144 & 7164 & path\_clustering & 51 & 3711 & 6921 \\
+  bell\_bb\_code\_[[72,12,6]] & 144 & 7164 & min\_la\_sa & 49 & 3510 & 6404 \\
+  init\_0\_bb\_code\_[[144, 12, 12]] & 144 & 4928 & hill\_climbing & 68 & 4255 & 7644 \\
+  init\_0\_bb\_code\_[[144, 12, 12]] & 144 & 4928 & height\_function\_sa & 53 & 3268 & 6174 \\
+  init\_0\_bb\_code\_[[144, 12, 12]] & 144 & 4928 & path\_clustering & 55 & 3684 & 6867 \\
+  init\_0\_bb\_code\_[[144, 12, 12]] & 144 & 4928 & min\_la\_sa & 69 & 4335 & 7870 \\
+  foliation\_1\_hgp\_code\_52\_4 & 152 & 292 & hill\_climbing & 18 & 259 & 589 \\
+  foliation\_1\_hgp\_code\_52\_4 & 152 & 292 & height\_function\_sa & 18 & 259 & 589 \\
+  foliation\_1\_hgp\_code\_52\_4 & 152 & 292 & path\_clustering & 18 & 259 & 589 \\
+  foliation\_1\_hgp\_code\_52\_4 & 152 & 292 & min\_la\_sa & 28 & 256 & 525 \\
+  bell\_hgp\_code\_80\_16 & 160 & 1874 & hill\_climbing & 54 & 1414 & 2416 \\
+  bell\_hgp\_code\_80\_16 & 160 & 1874 & height\_function\_sa & 41 & 1392 & 2575 \\
+  bell\_hgp\_code\_80\_16 & 160 & 1874 & path\_clustering & 40 & 1147 & 2103 \\
+  bell\_hgp\_code\_80\_16 & 160 & 1874 & min\_la\_sa & 48 & 1536 & 2727 \\
+  bell\_bb\_code\_[[90,8,10]] & 180 & 7266 & hill\_climbing & 56 & 4433 & 7875 \\
+  bell\_bb\_code\_[[90,8,10]] & 180 & 7266 & height\_function\_sa & 54 & 4728 & 8985 \\
+  bell\_bb\_code\_[[90,8,10]] & 180 & 7266 & path\_clustering & 53 & 4308 & 7901 \\
+  bell\_bb\_code\_[[90,8,10]] & 180 & 7266 & min\_la\_sa & 55 & 4242 & 7753 \\
+  bell\_hgp\_code\_106\_16 & 212 & 1741 & hill\_climbing & 55 & 1393 & 2405 \\
+  bell\_hgp\_code\_106\_16 & 212 & 1741 & height\_function\_sa & 50 & 1722 & 2943 \\
+  bell\_hgp\_code\_106\_16 & 212 & 1741 & path\_clustering & 50 & 1722 & 2943 \\
+  bell\_hgp\_code\_106\_16 & 212 & 1741 & min\_la\_sa & 48 & 1271 & 2392 \\
+  bell\_bb\_code\_[[108,8,10]] & 216 & 15014 & hill\_climbing & 92 & 9085 & 16323 \\
+  bell\_bb\_code\_[[108,8,10]] & 216 & 15014 & height\_function\_sa & 83 & 9165 & 16980 \\
+  bell\_bb\_code\_[[108,8,10]] & 216 & 15014 & path\_clustering & 83 & 9165 & 16980 \\
+  bell\_bb\_code\_[[108,8,10]] & 216 & 15014 & min\_la\_sa & 84 & 8713 & 15530 \\
+  foliation\_1\_bb\_code\_[[72,12,6]] & 216 & 504 & hill\_climbing & 67 & 1009 & 1674 \\
+  foliation\_1\_bb\_code\_[[72,12,6]] & 216 & 504 & height\_function\_sa & 64 & 986 & 1719 \\
+  foliation\_1\_bb\_code\_[[72,12,6]] & 216 & 504 & path\_clustering & 64 & 1112 & 1985 \\
+  foliation\_1\_bb\_code\_[[72,12,6]] & 216 & 504 & min\_la\_sa & 72 & 774 & 1288 \\
+  foliation\_1\_hgp\_code\_80\_16 & 224 & 368 & hill\_climbing & 26 & 240 & 694 \\
+  foliation\_1\_hgp\_code\_80\_16 & 224 & 368 & height\_function\_sa & 26 & 240 & 694 \\
+  foliation\_1\_hgp\_code\_80\_16 & 224 & 368 & path\_clustering & 43 & 387 & 948 \\
+  foliation\_1\_hgp\_code\_80\_16 & 224 & 368 & min\_la\_sa & 31 & 289 & 660 \\
+  bell\_hgp\_code\_130\_4 & 260 & 2416 & hill\_climbing & 35 & 1354 & 2700 \\
+  bell\_hgp\_code\_130\_4 & 260 & 2416 & height\_function\_sa & 35 & 923 & 1822 \\
+  bell\_hgp\_code\_130\_4 & 260 & 2416 & path\_clustering & 35 & 923 & 1822 \\
+  bell\_hgp\_code\_130\_4 & 260 & 2416 & min\_la\_sa & 40 & 1270 & 2504 \\
+  foliation\_1\_bb\_code\_[[90,8,10]] & 270 & 630 & hill\_climbing & 65 & 1059 & 1754 \\
+  foliation\_1\_bb\_code\_[[90,8,10]] & 270 & 630 & height\_function\_sa & 67 & 1012 & 1799 \\
+  foliation\_1\_bb\_code\_[[90,8,10]] & 270 & 630 & path\_clustering & 67 & 1012 & 1799 \\
+  foliation\_1\_bb\_code\_[[90,8,10]] & 270 & 630 & min\_la\_sa & 90 & 1139 & 1787 \\
+  bell\_bb\_code\_[[144, 12, 12]] & 288 & 28888 & hill\_climbing & 96 & 13941 & 25242 \\
+  bell\_bb\_code\_[[144, 12, 12]] & 288 & 28888 & height\_function\_sa & 102 & 14617 & 26590 \\
+  bell\_bb\_code\_[[144, 12, 12]] & 288 & 28888 & path\_clustering & 102 & 14617 & 26590 \\
+  bell\_bb\_code\_[[144, 12, 12]] & 288 & 28888 & min\_la\_sa & 98 & 13598 & 23192 \\
+  foliation\_3\_hgp\_code\_34\_4 & 294 & 602 & hill\_climbing & 34 & 787 & 1211 \\
+  foliation\_3\_hgp\_code\_34\_4 & 294 & 602 & height\_function\_sa & 34 & 780 & 1194 \\
+  foliation\_3\_hgp\_code\_34\_4 & 294 & 602 & path\_clustering & 42 & 648 & 1126 \\
+  foliation\_3\_hgp\_code\_34\_4 & 294 & 602 & min\_la\_sa & 34 & 673 & 1077 \\
+  foliation\_1\_hgp\_code\_106\_16 & 302 & 526 & hill\_climbing & 36 & 455 & 978 \\
+  foliation\_1\_hgp\_code\_106\_16 & 302 & 526 & height\_function\_sa & 36 & 449 & 966 \\
+  foliation\_1\_hgp\_code\_106\_16 & 302 & 526 & path\_clustering & 44 & 524 & 1050 \\
+  foliation\_1\_hgp\_code\_106\_16 & 302 & 526 & min\_la\_sa & 78 & 492 & 1189 \\
+  foliation\_1\_bb\_code\_[[108,8,10]] & 324 & 756 & hill\_climbing & 69 & 1572 & 2714 \\
+  foliation\_1\_bb\_code\_[[108,8,10]] & 324 & 756 & height\_function\_sa & 72 & 1550 & 2686 \\
+  foliation\_1\_bb\_code\_[[108,8,10]] & 324 & 756 & path\_clustering & 72 & 1550 & 2686 \\
+  foliation\_1\_bb\_code\_[[108,8,10]] & 324 & 756 & min\_la\_sa & 108 & 1151 & 1875 \\
+  foliation\_1\_hgp\_code\_130\_4 & 386 & 802 & hill\_climbing & 32 & 719 & 1389 \\
+  foliation\_1\_hgp\_code\_130\_4 & 386 & 802 & height\_function\_sa & 32 & 742 & 1422 \\
+  foliation\_1\_hgp\_code\_130\_4 & 386 & 802 & path\_clustering & 32 & 742 & 1422 \\
+  foliation\_1\_hgp\_code\_130\_4 & 386 & 802 & min\_la\_sa & 114 & 828 & 1669 \\
+  foliation\_1\_bb\_code\_[[144, 12, 12]] & 432 & 1008 & hill\_climbing & 92 & 1632 & 2827 \\
+  foliation\_1\_bb\_code\_[[144, 12, 12]] & 432 & 1008 & height\_function\_sa & 84 & 1440 & 2544 \\
+  foliation\_1\_bb\_code\_[[144, 12, 12]] & 432 & 1008 & path\_clustering & 84 & 1440 & 2544 \\
+  foliation\_1\_bb\_code\_[[144, 12, 12]] & 432 & 1008 & min\_la\_sa & 144 & 1796 & 2836 \\
+  foliation\_3\_hgp\_code\_52\_4 & 456 & 980 & hill\_climbing & 45 & 1090 & 2084 \\
+  foliation\_3\_hgp\_code\_52\_4 & 456 & 980 & height\_function\_sa & 46 & 1015 & 2009 \\
+  foliation\_3\_hgp\_code\_52\_4 & 456 & 980 & path\_clustering & 50 & 1014 & 2089 \\
+  foliation\_3\_hgp\_code\_52\_4 & 456 & 980 & min\_la\_sa & 53 & 1030 & 1649 \\
+  foliation\_5\_hgp\_code\_34\_4 & 490 & 1026 & hill\_climbing & 34 & 1311 & 1921 \\
+  foliation\_5\_hgp\_code\_34\_4 & 490 & 1026 & height\_function\_sa & 34 & 1219 & 1831 \\
+  foliation\_5\_hgp\_code\_34\_4 & 490 & 1026 & path\_clustering & 87 & 1323 & 2178 \\
+  foliation\_5\_hgp\_code\_34\_4 & 490 & 1026 & min\_la\_sa & 35 & 1055 & 1678 \\
+\end{longtable}
+
+new tables (reformatted into the same 3 categories as the previous tables:
+alone / bell pair / foliation, matching each one's exact layout, column
+spec, and caption style):
+
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.4}
+\caption{Testing our algorithms on several QECC families. HC denotes \texttt{hill\_climbing}, HFSA denotes \texttt{height\_function\_sa}, PC denotes \texttt{path\_clustering}, and MLSA denotes \texttt{min\_la\_sa}.}
+\label{tab:qecc-init}
+
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}ccccccc@{}}
+\toprule
+QECC & $|V|$ & $|E|$ & Alg. & Emit. & CNOTs & Gates \\
+\midrule
+
+Steane & 7 & 12 & HC & 3 & 5 & 19 \\
+Steane & 7 & 12 & HFSA & 3 & 5 & 19 \\
+Steane & 7 & 12 & PC & 3 & 5 & 19 \\
+Steane & 7 & 12 & MLSA & 3 & 5 & 19 \\
+\hline
+Shor & 9 & 6 & HC & 1 & 0 & 20 \\
+Shor & 9 & 6 & HFSA & 1 & 0 & 20 \\
+Shor & 9 & 6 & PC & 1 & 0 & 20 \\
+Shor & 9 & 6 & MLSA & 1 & 0 & 14 \\
+\hline
+$\mathrm{HGP}(34,4)$ & 34 & 81 & HC & 7 & 38 & 91 \\
+$\mathrm{HGP}(34,4)$ & 34 & 81 & HFSA & 6 & 31 & 95 \\
+$\mathrm{HGP}(34,4)$ & 34 & 81 & PC & 6 & 31 & 95 \\
+$\mathrm{HGP}(34,4)$ & 34 & 81 & MLSA & 7 & 35 & 107 \\
+\hline
+$\mathrm{HGP}(52,4)$ & 52 & 164 & HC & 10 & 88 & 177 \\
+$\mathrm{HGP}(52,4)$ & 52 & 164 & HFSA & 11 & 95 & 190 \\
+$\mathrm{HGP}(52,4)$ & 52 & 164 & PC & 9 & 81 & 182 \\
+$\mathrm{HGP}(52,4)$ & 52 & 164 & MLSA & 11 & 87 & 183 \\
+\hline
+$\mathrm{BB}[[72,12,6]]$ & 72 & 1283 & HC & 33 & 1127 & 2191 \\
+$\mathrm{BB}[[72,12,6]]$ & 72 & 1283 & HFSA & 32 & 1075 & 2044 \\
+$\mathrm{BB}[[72,12,6]]$ & 72 & 1283 & PC & 32 & 1206 & 2381 \\
+$\mathrm{BB}[[72,12,6]]$ & 72 & 1283 & MLSA & 35 & 1179 & 2212 \\
+\hline
+$\mathrm{HGP}(80,16)$ & 80 & 453 & HC & 21 & 240 & 531 \\
+$\mathrm{HGP}(80,16)$ & 80 & 453 & HFSA & 17 & 255 & 594 \\
+$\mathrm{HGP}(80,16)$ & 80 & 453 & PC & 16 & 270 & 627 \\
+$\mathrm{HGP}(80,16)$ & 80 & 453 & MLSA & 19 & 243 & 542 \\
+\hline
+$\mathrm{BB}[[90,8,10]]$ & 90 & 1347 & HC & 40 & 1216 & 2177 \\
+$\mathrm{BB}[[90,8,10]]$ & 90 & 1347 & HFSA & 35 & 1260 & 2434 \\
+$\mathrm{BB}[[90,8,10]]$ & 90 & 1347 & PC & 33 & 1213 & 2345 \\
+$\mathrm{BB}[[90,8,10]]$ & 90 & 1347 & MLSA & 42 & 1288 & 2380 \\
+\hline
+$\mathrm{HGP}(106,16)$ & 106 & 542 & HC & 22 & 382 & 769 \\
+$\mathrm{HGP}(106,16)$ & 106 & 542 & HFSA & 24 & 408 & 817 \\
+$\mathrm{HGP}(106,16)$ & 106 & 542 & PC & 24 & 408 & 817 \\
+$\mathrm{HGP}(106,16)$ & 106 & 542 & MLSA & 24 & 326 & 707 \\
+\hline
+$\mathrm{BB}[[108,8,10]]$ & 108 & 2281 & HC & 50 & 2474 & 4535 \\
+$\mathrm{BB}[[108,8,10]]$ & 108 & 2281 & HFSA & 39 & 1905 & 3742 \\
+$\mathrm{BB}[[108,8,10]]$ & 108 & 2281 & PC & 43 & 2291 & 4507 \\
+$\mathrm{BB}[[108,8,10]]$ & 108 & 2281 & MLSA & 52 & 2465 & 4512 \\
+\hline
+$\mathrm{HGP}(130,4)$ & 130 & 1080 & HC & 17 & 341 & 687 \\
+$\mathrm{HGP}(130,4)$ & 130 & 1080 & HFSA & 21 & 337 & 685 \\
+$\mathrm{HGP}(130,4)$ & 130 & 1080 & PC & 21 & 337 & 685 \\
+$\mathrm{HGP}(130,4)$ & 130 & 1080 & MLSA & 24 & 346 & 706 \\
+\hline
+$\mathrm{BB}[[144,12,12]]$ & 144 & 4928 & HC & 68 & 4255 & 7644 \\
+$\mathrm{BB}[[144,12,12]]$ & 144 & 4928 & HFSA & 53 & 3268 & 6174 \\
+$\mathrm{BB}[[144,12,12]]$ & 144 & 4928 & PC & 55 & 3684 & 6867 \\
+$\mathrm{BB}[[144,12,12]]$ & 144 & 4928 & MLSA & 69 & 4335 & 7870 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.4}
+\caption{Testing our algorithms on several QECC families after a logical Bell pair is imposed. HC denotes \texttt{hill\_climbing}, HFSA denotes \texttt{height\_function\_sa}, PC denotes \texttt{path\_clustering}, and MLSA denotes \texttt{min\_la\_sa}.}
+\label{tab:qecc-bell}
+
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}ccccccc@{}}
+\toprule
+Bell QECC & $|V|$ & $|E|$ & Alg. & Emit. & CNOTs & Gates \\
+\midrule
+
+Steane & 14 & 33 & HC & 3 & 17 & 54 \\
+Steane & 14 & 33 & HFSA & 3 & 19 & 60 \\
+Steane & 14 & 33 & PC & 3 & 19 & 60 \\
+Steane & 14 & 33 & MLSA & 3 & 16 & 53 \\
+\hline
+Shor & 18 & 21 & HC & 3 & 3 & 29 \\
+Shor & 18 & 21 & HFSA & 2 & 4 & 35 \\
+Shor & 18 & 21 & PC & 3 & 3 & 29 \\
+Shor & 18 & 21 & MLSA & 3 & 4 & 32 \\
+\hline
+$\mathrm{HGP}(34,4)$ & 68 & 306 & HC & 14 & 145 & 324 \\
+$\mathrm{HGP}(34,4)$ & 68 & 306 & HFSA & 14 & 174 & 444 \\
+$\mathrm{HGP}(34,4)$ & 68 & 306 & PC & 15 & 167 & 410 \\
+$\mathrm{HGP}(34,4)$ & 68 & 306 & MLSA & 23 & 265 & 533 \\
+\hline
+$\mathrm{HGP}(52,4)$ & 104 & 466 & HC & 16 & 267 & 549 \\
+$\mathrm{HGP}(52,4)$ & 104 & 466 & HFSA & 16 & 267 & 549 \\
+$\mathrm{HGP}(52,4)$ & 104 & 466 & PC & 16 & 267 & 549 \\
+$\mathrm{HGP}(52,4)$ & 104 & 466 & MLSA & 17 & 304 & 623 \\
+\hline
+$\mathrm{BB}[[72,12,6]]$ & 144 & 7164 & HC & 49 & 3474 & 6211 \\
+$\mathrm{BB}[[72,12,6]]$ & 144 & 7164 & HFSA & 51 & 3711 & 6921 \\
+$\mathrm{BB}[[72,12,6]]$ & 144 & 7164 & PC & 51 & 3711 & 6921 \\
+$\mathrm{BB}[[72,12,6]]$ & 144 & 7164 & MLSA & 49 & 3510 & 6404 \\
+\hline
+$\mathrm{HGP}(80,16)$ & 160 & 1874 & HC & 54 & 1414 & 2416 \\
+$\mathrm{HGP}(80,16)$ & 160 & 1874 & HFSA & 41 & 1392 & 2575 \\
+$\mathrm{HGP}(80,16)$ & 160 & 1874 & PC & 40 & 1147 & 2103 \\
+$\mathrm{HGP}(80,16)$ & 160 & 1874 & MLSA & 48 & 1536 & 2727 \\
+\hline
+$\mathrm{BB}[[90,8,10]]$ & 180 & 7266 & HC & 56 & 4433 & 7875 \\
+$\mathrm{BB}[[90,8,10]]$ & 180 & 7266 & HFSA & 54 & 4728 & 8985 \\
+$\mathrm{BB}[[90,8,10]]$ & 180 & 7266 & PC & 53 & 4308 & 7901 \\
+$\mathrm{BB}[[90,8,10]]$ & 180 & 7266 & MLSA & 55 & 4242 & 7753 \\
+\hline
+$\mathrm{HGP}(106,16)$ & 212 & 1741 & HC & 55 & 1393 & 2405 \\
+$\mathrm{HGP}(106,16)$ & 212 & 1741 & HFSA & 50 & 1722 & 2943 \\
+$\mathrm{HGP}(106,16)$ & 212 & 1741 & PC & 50 & 1722 & 2943 \\
+$\mathrm{HGP}(106,16)$ & 212 & 1741 & MLSA & 48 & 1271 & 2392 \\
+\hline
+$\mathrm{BB}[[108,8,10]]$ & 216 & 15014 & HC & 92 & 9085 & 16323 \\
+$\mathrm{BB}[[108,8,10]]$ & 216 & 15014 & HFSA & 83 & 9165 & 16980 \\
+$\mathrm{BB}[[108,8,10]]$ & 216 & 15014 & PC & 83 & 9165 & 16980 \\
+$\mathrm{BB}[[108,8,10]]$ & 216 & 15014 & MLSA & 84 & 8713 & 15530 \\
+\hline
+$\mathrm{HGP}(130,4)$ & 260 & 2416 & HC & 35 & 1354 & 2700 \\
+$\mathrm{HGP}(130,4)$ & 260 & 2416 & HFSA & 35 & 923 & 1822 \\
+$\mathrm{HGP}(130,4)$ & 260 & 2416 & PC & 35 & 923 & 1822 \\
+$\mathrm{HGP}(130,4)$ & 260 & 2416 & MLSA & 40 & 1270 & 2504 \\
+\hline
+$\mathrm{BB}[[144,12,12]]$ & 288 & 28888 & HC & 96 & 13941 & 25242 \\
+$\mathrm{BB}[[144,12,12]]$ & 288 & 28888 & HFSA & 102 & 14617 & 26590 \\
+$\mathrm{BB}[[144,12,12]]$ & 288 & 28888 & PC & 102 & 14617 & 26590 \\
+$\mathrm{BB}[[144,12,12]]$ & 288 & 28888 & MLSA & 98 & 13598 & 23192 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\begin{table*}[t]
+% \tiny
+\setlength{\tabcolsep}{2.6pt}
+\renewcommand{\arraystretch}{1.2}
+\caption{Testing our algorithms on several QECC families after $l_f$ foliations imposed. HC denotes \texttt{hill\_climbing}, HFSA denotes \texttt{height\_function\_sa}, PC denotes \texttt{path\_clustering}, and MLSA denotes \texttt{min\_la\_sa}.}
+
+\label{tab:qecc-fol}
+
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\begin{tabular}{@{}cccccccc@{}}
+\toprule
+$l_f$ QECC & $|V|$ & $|E|$ & Alg. & Emit. & CNOTs & Gates \\
+\midrule
+
+1 Steane & 20 & 31 & HC & 5 & 22 & 63 \\
+
+1 Steane & 20 & 31 & HFSA & 5 & 22 & 63 \\
+
+1 Steane & 20 & 31 & PC & 5 & 22 & 63 \\
+
+1 Steane & 20 & 31 & MLSA & 6 & 20 & 67 \\
+
+\hline
+
+1 Shor & 26 & 33 & HC & 3 & 13 & 64 \\
+
+1 Shor & 26 & 33 & HFSA & 4 & 15 & 63 \\
+
+1 Shor & 26 & 33 & PC & 4 & 15 & 68 \\
+
+1 Shor & 26 & 33 & MLSA & 3 & 15 & 69 \\
+
+\hline
+
+3 Steane & 60 & 107 & HC & 7 & 98 & 175 \\
+
+3 Steane & 60 & 107 & HFSA & 7 & 92 & 173 \\
+
+3 Steane & 60 & 107 & PC & 7 & 92 & 173 \\
+
+3 Steane & 60 & 107 & MLSA & 7 & 90 & 173 \\
+
+\hline
+
+3 Shor & 78 & 117 & HC & 7 & 84 & 240 \\
+
+3 Shor & 78 & 117 & HFSA & 8 & 82 & 238 \\
+
+3 Shor & 78 & 117 & PC & 13 & 98 & 285 \\
+
+3 Shor & 78 & 117 & MLSA & 10 & 68 & 173 \\
+
+\hline
+
+1 $\mathrm{HGP}(34,4)$ & 98 & 178 & HC & 15 & 136 & 290 \\
+
+1 $\mathrm{HGP}(34,4)$ & 98 & 178 & HFSA & 15 & 136 & 290 \\
+
+1 $\mathrm{HGP}(34,4)$ & 98 & 178 & PC & 15 & 168 & 373 \\
+
+1 $\mathrm{HGP}(34,4)$ & 98 & 178 & MLSA & 15 & 147 & 314 \\
+
+\hline
+
+5 Steane & 100 & 183 & HC & 7 & 175 & 294 \\
+
+5 Steane & 100 & 183 & HFSA & 7 & 173 & 294 \\
+
+5 Steane & 100 & 183 & PC & 7 & 173 & 294 \\
+
+5 Steane & 100 & 183 & MLSA & 8 & 150 & 274 \\
+
+\hline
+
+5 Shor & 130 & 201 & HC & 9 & 139 & 292 \\
+
+5 Shor & 130 & 201 & HFSA & 9 & 140 & 293 \\
+
+5 Shor & 130 & 201 & PC & 22 & 155 & 459 \\
+
+5 Shor & 130 & 201 & MLSA & 9 & 133 & 284 \\
+
+\hline
+
+1 $\mathrm{HGP}(52,4)$ & 152 & 292 & HC & 18 & 259 & 589 \\
+
+1 $\mathrm{HGP}(52,4)$ & 152 & 292 & HFSA & 18 & 259 & 589 \\
+
+1 $\mathrm{HGP}(52,4)$ & 152 & 292 & PC & 18 & 259 & 589 \\
+
+1 $\mathrm{HGP}(52,4)$ & 152 & 292 & MLSA & 28 & 256 & 525 \\
+
+\hline
+
+1 $\mathrm{BB}[[72,12,6]]$ & 216 & 504 & HC & 67 & 1009 & 1674 \\
+
+1 $\mathrm{BB}[[72,12,6]]$ & 216 & 504 & HFSA & 64 & 986 & 1719 \\
+
+1 $\mathrm{BB}[[72,12,6]]$ & 216 & 504 & PC & 64 & 1112 & 1985 \\
+
+1 $\mathrm{BB}[[72,12,6]]$ & 216 & 504 & MLSA & 72 & 774 & 1288 \\
+
+\bottomrule
+\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\begin{tabular}{@{}cccccccc@{}}
+\toprule
+$l_f$ QECC & $|V|$ & $|E|$ & Alg. & Emit. & CNOTs & Gates \\
+\midrule
+
+1 $\mathrm{HGP}(80,16)$ & 224 & 368 & HC & 26 & 240 & 694 \\
+
+1 $\mathrm{HGP}(80,16)$ & 224 & 368 & HFSA & 26 & 240 & 694 \\
+
+1 $\mathrm{HGP}(80,16)$ & 224 & 368 & PC & 43 & 387 & 948 \\
+
+1 $\mathrm{HGP}(80,16)$ & 224 & 368 & MLSA & 31 & 289 & 660 \\
+
+\hline
+
+1 $\mathrm{BB}[[90,8,10]]$ & 270 & 630 & HC & 65 & 1059 & 1754 \\
+
+1 $\mathrm{BB}[[90,8,10]]$ & 270 & 630 & HFSA & 67 & 1012 & 1799 \\
+
+1 $\mathrm{BB}[[90,8,10]]$ & 270 & 630 & PC & 67 & 1012 & 1799 \\
+
+1 $\mathrm{BB}[[90,8,10]]$ & 270 & 630 & MLSA & 90 & 1139 & 1787 \\
+
+\hline
+
+3 $\mathrm{HGP}(34,4)$ & 294 & 602 & HC & 34 & 787 & 1211 \\
+
+3 $\mathrm{HGP}(34,4)$ & 294 & 602 & HFSA & 34 & 780 & 1194 \\
+
+3 $\mathrm{HGP}(34,4)$ & 294 & 602 & PC & 42 & 648 & 1126 \\
+
+3 $\mathrm{HGP}(34,4)$ & 294 & 602 & MLSA & 34 & 673 & 1077 \\
+
+\hline
+
+1 $\mathrm{HGP}(106,16)$ & 302 & 526 & HC & 36 & 455 & 978 \\
+
+1 $\mathrm{HGP}(106,16)$ & 302 & 526 & HFSA & 36 & 449 & 966 \\
+
+1 $\mathrm{HGP}(106,16)$ & 302 & 526 & PC & 44 & 524 & 1050 \\
+
+1 $\mathrm{HGP}(106,16)$ & 302 & 526 & MLSA & 78 & 492 & 1189 \\
+
+\hline
+
+1 $\mathrm{BB}[[108,8,10]]$ & 324 & 756 & HC & 69 & 1572 & 2714 \\
+
+1 $\mathrm{BB}[[108,8,10]]$ & 324 & 756 & HFSA & 72 & 1550 & 2686 \\
+
+1 $\mathrm{BB}[[108,8,10]]$ & 324 & 756 & PC & 72 & 1550 & 2686 \\
+
+1 $\mathrm{BB}[[108,8,10]]$ & 324 & 756 & MLSA & 108 & 1151 & 1875 \\
+
+\hline
+
+1 $\mathrm{HGP}(130,4)$ & 386 & 802 & HC & 32 & 719 & 1389 \\
+
+1 $\mathrm{HGP}(130,4)$ & 386 & 802 & HFSA & 32 & 742 & 1422 \\
+
+1 $\mathrm{HGP}(130,4)$ & 386 & 802 & PC & 32 & 742 & 1422 \\
+
+1 $\mathrm{HGP}(130,4)$ & 386 & 802 & MLSA & 114 & 828 & 1669 \\
+
+\hline
+
+1 $\mathrm{BB}[[144,12,12]]$ & 432 & 1008 & HC & 92 & 1632 & 2827 \\
+
+1 $\mathrm{BB}[[144,12,12]]$ & 432 & 1008 & HFSA & 84 & 1440 & 2544 \\
+
+1 $\mathrm{BB}[[144,12,12]]$ & 432 & 1008 & PC & 84 & 1440 & 2544 \\
+
+1 $\mathrm{BB}[[144,12,12]]$ & 432 & 1008 & MLSA & 144 & 1796 & 2836 \\
+
+\hline
+
+3 $\mathrm{HGP}(52,4)$ & 456 & 980 & HC & 45 & 1090 & 2084 \\
+
+3 $\mathrm{HGP}(52,4)$ & 456 & 980 & HFSA & 46 & 1015 & 2009 \\
+
+3 $\mathrm{HGP}(52,4)$ & 456 & 980 & PC & 50 & 1014 & 2089 \\
+
+3 $\mathrm{HGP}(52,4)$ & 456 & 980 & MLSA & 53 & 1030 & 1649 \\
+
+\hline
+
+5 $\mathrm{HGP}(34,4)$ & 490 & 1026 & HC & 34 & 1311 & 1921 \\
+
+5 $\mathrm{HGP}(34,4)$ & 490 & 1026 & HFSA & 34 & 1219 & 1831 \\
+
+5 $\mathrm{HGP}(34,4)$ & 490 & 1026 & PC & 87 & 1323 & 2178 \\
+
+5 $\mathrm{HGP}(34,4)$ & 490 & 1026 & MLSA & 35 & 1055 & 1678 \\
+
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{table*}

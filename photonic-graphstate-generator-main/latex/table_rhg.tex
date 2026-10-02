@@ -1,96 +1,92 @@
-\begin{longtable}{lrrrrrrr}
-  \caption{RHG lattice benchmark results — 20 completed lattices × 4 algorithms.} \label{tab:rhg_results} \\
+\begin{longtable}{lrrrrrr}
+  \caption{RHG lattice benchmark results — 19 completed lattices × 4 algorithms.} \label{tab:rhg_results} \\
   \toprule
-  \textbf{Dims} & \textbf{|V|} & \textbf{|E|} & \textbf{Algorithm} & \textbf{Emitters} & \textbf{CNOTs} & \textbf{Gates} & \textbf{Runtime (s)} \\
+  \textbf{Dims} & \textbf{|V|} & \textbf{|E|} & \textbf{Algorithm} & \textbf{Emitters} & \textbf{CNOTs} & \textbf{Gates} \\
   \midrule
   \endfirsthead
-  \multicolumn{8}{c}{\tablename\ \thetable{} (continued)} \\
+  \multicolumn{7}{c}{\tablename\ \thetable{} (continued)} \\
   \toprule
-  \textbf{Dims} & \textbf{|V|} & \textbf{|E|} & \textbf{Algorithm} & \textbf{Emitters} & \textbf{CNOTs} & \textbf{Gates} & \textbf{Runtime (s)} \\
+  \textbf{Dims} & \textbf{|V|} & \textbf{|E|} & \textbf{Algorithm} & \textbf{Emitters} & \textbf{CNOTs} & \textbf{Gates} \\
   \midrule
   \endhead
-  \midrule \multicolumn{8}{r}{\textit{continued on next page}} \\
+  \midrule \multicolumn{7}{r}{\textit{continued on next page}} \\
   \endfoot
   \bottomrule
   \endlastfoot
-  (1,1,1) & 18 & 24 & Hill Climbing & 4 & 14 & 40 & 2.3 \\
-  (1,1,1) & 18 & 24 & Height Function SA & 4 & 14 & 40 & 5.9 \\
-  (1,1,1) & 18 & 24 & Path Clustering & 4 & 14 & 40 & 4.6 \\
-  (1,1,1) & 18 & 24 & Minimum LA SA & 4 & 15 & 45 & 1.7 \\
-  (1,1,2) & 31 & 44 & Hill Climbing & 4 & 30 & 73 & 6.4 \\
-  (1,1,2) & 31 & 44 & Height Function SA & 4 & 30 & 73 & 12.6 \\
-  (1,1,2) & 31 & 44 & Path Clustering & 4 & 30 & 73 & 9.4 \\
-  (1,1,2) & 31 & 44 & Minimum LA SA & 5 & 30 & 70 & 3.3 \\
-  (1,1,3) & 44 & 64 & Hill Climbing & 4 & 39 & 95 & 12.2 \\
-  (1,1,3) & 44 & 64 & Height Function SA & 4 & 39 & 95 & 19.6 \\
-  (1,1,3) & 44 & 64 & Path Clustering & 4 & 39 & 95 & 15.0 \\
-  (1,1,3) & 44 & 64 & Minimum LA SA & 4 & 39 & 93 & 4.5 \\
-  (1,2,2) & 53 & 80 & Hill Climbing & 7 & 50 & 126 & 20.7 \\
-  (1,2,2) & 53 & 80 & Height Function SA & 7 & 50 & 126 & 30.3 \\
-  (1,2,2) & 53 & 80 & Path Clustering & 7 & 50 & 126 & 23.0 \\
-  (1,2,2) & 53 & 80 & Minimum LA SA & 7 & 51 & 115 & 6.1 \\
-  (1,1,4) & 57 & 84 & Hill Climbing & 4 & 59 & 126 & 21.3 \\
-  (1,1,4) & 57 & 84 & Height Function SA & 4 & 59 & 126 & 33.0 \\
-  (1,1,4) & 57 & 84 & Path Clustering & 4 & 59 & 126 & 25.3 \\
-  (1,1,4) & 57 & 84 & Minimum LA SA & 4 & 54 & 125 & 6.3 \\
-  (1,2,3) & 75 & 116 & Hill Climbing & 7 & 85 & 181 & 52.4 \\
-  (1,2,3) & 75 & 116 & Height Function SA & 7 & 85 & 181 & 59.9 \\
-  (1,2,3) & 75 & 116 & Path Clustering & 7 & 85 & 181 & 47.4 \\
-  (1,2,3) & 75 & 116 & Minimum LA SA & 11 & 85 & 232 & 11.3 \\
-  (2,2,2) & 90 & 144 & Hill Climbing & 11 & 101 & 282 & 112.2 \\
-  (2,2,2) & 90 & 144 & Height Function SA & 11 & 101 & 282 & 96.2 \\
-  (2,2,2) & 90 & 144 & Path Clustering & 11 & 101 & 282 & 74.8 \\
-  (2,2,2) & 90 & 144 & Minimum LA SA & 12 & 114 & 242 & 17.4 \\
-  (1,2,4) & 97 & 152 & Hill Climbing & 7 & 123 & 237 & 119.5 \\
-  (1,2,4) & 97 & 152 & Height Function SA & 7 & 123 & 237 & 103.9 \\
-  (1,2,4) & 97 & 152 & Path Clustering & 8 & 112 & 237 & 185.6 \\
-  (1,2,4) & 97 & 152 & Minimum LA SA & 10 & 102 & 258 & 18.2 \\
-  (1,3,3) & 106 & 168 & Hill Climbing & 10 & 112 & 256 & 160.5 \\
-  (1,3,3) & 106 & 168 & Height Function SA & 10 & 112 & 256 & 123.4 \\
-  (1,3,3) & 106 & 168 & Path Clustering & 10 & 112 & 256 & 96.1 \\
-  (1,3,3) & 106 & 168 & Minimum LA SA & 11 & 131 & 292 & 21.5 \\
-  (2,2,3) & 127 & 208 & Hill Climbing & 12 & 174 & 337 & 329.4 \\
-  (2,2,3) & 127 & 208 & Height Function SA & 12 & 174 & 337 & 203.3 \\
-  (2,2,3) & 127 & 208 & Path Clustering & 12 & 174 & 337 & 160.8 \\
-  (2,2,3) & 127 & 208 & Minimum LA SA & 17 & 155 & 325 & 34.7 \\
-  (1,3,4) & 137 & 220 & Hill Climbing & 10 & 179 & 342 & 379.3 \\
-  (1,3,4) & 137 & 220 & Height Function SA & 10 & 179 & 342 & 222.2 \\
-  (1,3,4) & 137 & 220 & Path Clustering & 10 & 179 & 342 & 171.9 \\
-  (1,3,4) & 137 & 220 & Minimum LA SA & 14 & 179 & 418 & 34.9 \\
-  (2,2,4) & 164 & 272 & Hill Climbing & 12 & 237 & 441 & 728.5 \\
-  (2,2,4) & 164 & 272 & Height Function SA & 12 & 237 & 441 & 369.3 \\
-  (2,2,4) & 164 & 272 & Path Clustering & 12 & 237 & 441 & 286.7 \\
-  (2,2,4) & 164 & 272 & Minimum LA SA & 22 & 238 & 466 & 60.1 \\
-  (1,4,4) & 177 & 288 & Hill Climbing & 13 & 200 & 450 & 857.2 \\
-  (1,4,4) & 177 & 288 & Height Function SA & 13 & 200 & 450 & 423.7 \\
-  (1,4,4) & 177 & 288 & Path Clustering & 21 & 235 & 503 & 762.7 \\
-  (1,4,4) & 177 & 288 & Minimum LA SA & 25 & 213 & 583 & 63.1 \\
-  (2,3,3) & 179 & 300 & Hill Climbing & 17 & 226 & 478 & 949.9 \\
-  (2,3,3) & 179 & 300 & Height Function SA & 17 & 226 & 478 & 463.4 \\
-  (2,3,3) & 179 & 300 & Path Clustering & 19 & 240 & 534 & 827.6 \\
-  (2,3,3) & 179 & 300 & Minimum LA SA & 24 & 231 & 468 & 72.9 \\
-  (2,3,4) & 231 & 392 & Hill Climbing & 17 & 368 & 650 & 1736.1 \\
-  (2,3,4) & 231 & 392 & Height Function SA & 17 & 368 & 650 & 821.3 \\
-  (2,3,4) & 231 & 392 & Path Clustering & 24 & 348 & 665 & 1261.1 \\
-  (2,3,4) & 231 & 392 & Minimum LA SA & 31 & 349 & 661 & 133.9 \\
-  (3,3,3) & 252 & 432 & Hill Climbing & 21 & 303 & 810 & 2553.4 \\
-  (3,3,3) & 252 & 432 & Height Function SA & 21 & 303 & 810 & 1053.3 \\
-  (3,3,3) & 252 & 432 & Path Clustering & 31 & 363 & 736 & 1889.7 \\
-  (3,3,3) & 252 & 432 & Minimum LA SA & 25 & 345 & 664 & 162.3 \\
-  (2,4,4) & 298 & 512 & Hill Climbing & 22 & 415 & 851 & 4242.1 \\
-  (2,4,4) & 298 & 512 & Height Function SA & 22 & 415 & 851 & 1548.8 \\
-  (2,4,4) & 298 & 512 & Path Clustering & 29 & 417 & 811 & 2868.6 \\
-  (2,4,4) & 298 & 512 & Minimum LA SA & 40 & 425 & 831 & 216.8 \\
-  (3,3,4) & 325 & 564 & Hill Climbing & 24 & 560 & 959 & 5727.0 \\
-  (3,3,4) & 325 & 564 & Height Function SA & 24 & 560 & 959 & 2076.3 \\
-  (3,3,4) & 325 & 564 & Path Clustering & 31 & 486 & 908 & 3698.3 \\
-  (3,3,4) & 325 & 564 & Minimum LA SA & 32 & 450 & 853 & 303.1 \\
-  (3,4,4) & 419 & 736 & Hill Climbing & 28 & 519 & 1365 & 12240.6 \\
-  (3,4,4) & 419 & 736 & Height Function SA & 29 & 528 & 1380 & 4120.7 \\
-  (3,4,4) & 419 & 736 & Path Clustering & 54 & 700 & 1432 & 6679.7 \\
-  (3,4,4) & 419 & 736 & Minimum LA SA & 40 & 602 & 1125 & 632.5 \\
-  (4,4,4) & 540 & 960 & Hill Climbing & 33 & 670 & 1783 & 21985.8 \\
-  (4,4,4) & 540 & 960 & Height Function SA & 33 & 670 & 1783 & 8488.0 \\
-  (4,4,4) & 540 & 960 & Path Clustering & 62 & 893 & 1969 & 11266.1 \\
-  (4,4,4) & 540 & 960 & Minimum LA SA & 40 & 784 & 1426 & 1278.0 \\
+  (1,1,1) & 18 & 24 & hill\_climbing & 4 & 14 & 40 \\
+  (1,1,1) & 18 & 24 & height\_function\_sa & 4 & 14 & 40 \\
+  (1,1,1) & 18 & 24 & path\_clustering & 4 & 14 & 40 \\
+  (1,1,1) & 18 & 24 & min\_la\_sa & 4 & 15 & 45 \\
+  (1,1,2) & 31 & 44 & hill\_climbing & 4 & 30 & 73 \\
+  (1,1,2) & 31 & 44 & height\_function\_sa & 4 & 30 & 73 \\
+  (1,1,2) & 31 & 44 & path\_clustering & 4 & 30 & 73 \\
+  (1,1,2) & 31 & 44 & min\_la\_sa & 5 & 30 & 70 \\
+  (1,1,3) & 44 & 64 & hill\_climbing & 4 & 39 & 93 \\
+  (1,1,3) & 44 & 64 & height\_function\_sa & 4 & 39 & 95 \\
+  (1,1,3) & 44 & 64 & path\_clustering & 4 & 39 & 95 \\
+  (1,1,3) & 44 & 64 & min\_la\_sa & 4 & 39 & 93 \\
+  (1,2,2) & 53 & 80 & hill\_climbing & 7 & 50 & 126 \\
+  (1,2,2) & 53 & 80 & height\_function\_sa & 7 & 50 & 126 \\
+  (1,2,2) & 53 & 80 & path\_clustering & 7 & 50 & 126 \\
+  (1,2,2) & 53 & 80 & min\_la\_sa & 7 & 51 & 115 \\
+  (1,1,4) & 57 & 84 & hill\_climbing & 4 & 51 & 118 \\
+  (1,1,4) & 57 & 84 & height\_function\_sa & 4 & 59 & 126 \\
+  (1,1,4) & 57 & 84 & path\_clustering & 4 & 59 & 126 \\
+  (1,1,4) & 57 & 84 & min\_la\_sa & 4 & 54 & 125 \\
+  (1,2,3) & 75 & 116 & hill\_climbing & 7 & 79 & 171 \\
+  (1,2,3) & 75 & 116 & height\_function\_sa & 7 & 85 & 181 \\
+  (1,2,3) & 75 & 116 & path\_clustering & 7 & 85 & 181 \\
+  (1,2,3) & 75 & 116 & min\_la\_sa & 11 & 85 & 232 \\
+  (2,2,2) & 90 & 144 & hill\_climbing & 11 & 101 & 282 \\
+  (2,2,2) & 90 & 144 & height\_function\_sa & 11 & 101 & 282 \\
+  (2,2,2) & 90 & 144 & path\_clustering & 11 & 101 & 282 \\
+  (2,2,2) & 90 & 144 & min\_la\_sa & 12 & 114 & 242 \\
+  (1,2,4) & 97 & 152 & hill\_climbing & 7 & 111 & 227 \\
+  (1,2,4) & 97 & 152 & height\_function\_sa & 7 & 123 & 237 \\
+  (1,2,4) & 97 & 152 & path\_clustering & 8 & 112 & 237 \\
+  (1,2,4) & 97 & 152 & min\_la\_sa & 10 & 102 & 258 \\
+  (1,3,3) & 106 & 168 & hill\_climbing & 10 & 110 & 254 \\
+  (1,3,3) & 106 & 168 & height\_function\_sa & 10 & 112 & 256 \\
+  (1,3,3) & 106 & 168 & path\_clustering & 10 & 112 & 256 \\
+  (1,3,3) & 106 & 168 & min\_la\_sa & 11 & 131 & 292 \\
+  (2,2,3) & 127 & 208 & hill\_climbing & 12 & 188 & 357 \\
+  (2,2,3) & 127 & 208 & height\_function\_sa & 12 & 174 & 337 \\
+  (2,2,3) & 127 & 208 & path\_clustering & 12 & 174 & 337 \\
+  (2,2,3) & 127 & 208 & min\_la\_sa & 17 & 155 & 325 \\
+  (1,3,4) & 137 & 220 & hill\_climbing & 10 & 176 & 347 \\
+  (1,3,4) & 137 & 220 & height\_function\_sa & 10 & 179 & 342 \\
+  (1,3,4) & 137 & 220 & path\_clustering & 10 & 179 & 342 \\
+  (1,3,4) & 137 & 220 & min\_la\_sa & 14 & 179 & 418 \\
+  (2,2,4) & 164 & 272 & hill\_climbing & 12 & 236 & 434 \\
+  (2,2,4) & 164 & 272 & height\_function\_sa & 12 & 237 & 441 \\
+  (2,2,4) & 164 & 272 & path\_clustering & 12 & 237 & 441 \\
+  (2,2,4) & 164 & 272 & min\_la\_sa & 22 & 238 & 466 \\
+  (1,4,4) & 177 & 288 & hill\_climbing & 13 & 203 & 465 \\
+  (1,4,4) & 177 & 288 & height\_function\_sa & 13 & 200 & 450 \\
+  (1,4,4) & 177 & 288 & path\_clustering & 21 & 235 & 503 \\
+  (1,4,4) & 177 & 288 & min\_la\_sa & 25 & 213 & 583 \\
+  (2,3,3) & 179 & 300 & hill\_climbing & 17 & 227 & 479 \\
+  (2,3,3) & 179 & 300 & height\_function\_sa & 17 & 226 & 478 \\
+  (2,3,3) & 179 & 300 & path\_clustering & 19 & 240 & 534 \\
+  (2,3,3) & 179 & 300 & min\_la\_sa & 24 & 231 & 468 \\
+  (2,3,4) & 231 & 392 & hill\_climbing & 17 & 360 & 644 \\
+  (2,3,4) & 231 & 392 & height\_function\_sa & 17 & 368 & 650 \\
+  (2,3,4) & 231 & 392 & path\_clustering & 24 & 348 & 665 \\
+  (2,3,4) & 231 & 392 & min\_la\_sa & 31 & 349 & 661 \\
+  (3,3,3) & 252 & 432 & hill\_climbing & 21 & 303 & 810 \\
+  (3,3,3) & 252 & 432 & height\_function\_sa & 21 & 303 & 810 \\
+  (3,3,3) & 252 & 432 & path\_clustering & 31 & 363 & 736 \\
+  (3,3,3) & 252 & 432 & min\_la\_sa & 25 & 345 & 664 \\
+  (2,4,4) & 298 & 512 & hill\_climbing & 22 & 419 & 849 \\
+  (2,4,4) & 298 & 512 & height\_function\_sa & 22 & 415 & 851 \\
+  (2,4,4) & 298 & 512 & path\_clustering & 29 & 417 & 811 \\
+  (2,4,4) & 298 & 512 & min\_la\_sa & 40 & 425 & 831 \\
+  (3,3,4) & 325 & 564 & hill\_climbing & 24 & 574 & 989 \\
+  (3,3,4) & 325 & 564 & height\_function\_sa & 24 & 560 & 959 \\
+  (3,3,4) & 325 & 564 & path\_clustering & 31 & 486 & 908 \\
+  (3,3,4) & 325 & 564 & min\_la\_sa & 32 & 450 & 853 \\
+  (3,4,4) & 419 & 736 & hill\_climbing & 28 & 519 & 1365 \\
+  (3,4,4) & 419 & 736 & height\_function\_sa & 29 & 528 & 1380 \\
+  (3,4,4) & 419 & 736 & path\_clustering & 54 & 700 & 1432 \\
+  (3,4,4) & 419 & 736 & min\_la\_sa & 40 & 602 & 1125 \\
 \end{longtable}

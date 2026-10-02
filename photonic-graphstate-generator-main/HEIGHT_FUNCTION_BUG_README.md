@@ -106,9 +106,7 @@ Full existing `tests/` suite: same 51 pre-existing failures before and after (in
 
 ## A detail regarding rank_width_sa.py
 
-1. ~~Consider deleting the duplicated `_gf2_rank`/`gf2_rank`/`_cut_rank` code in
-   `rank_width_sa.py` and having it import from `rank_width.py` instead, so there's one
-   implementation, not two that can drift apart again. **Done.** `rank_width_sa.py` now imports
+1. **Everything is imported from `rank_width_sa.py`.** `rank_width_sa.py` now imports
    `_gf2_rank`, `_gf2_rank_bitpacked`, `gf2_rank`, and `_cut_rank` directly from `rank_width.py`
    instead of maintaining its own copy. `path_clustering.py` (which imports `gf2_rank` from
    `rank_width_sa.py`) and `visualise_path_clustering_steps.py` needed no changes — they now
@@ -121,12 +119,4 @@ Full existing `tests/` suite: same 51 pre-existing failures before and after (in
    - Full `tests/` suite: same pre-existing failures only (in `test_circuitSolver.py`,
      `test_generate_graph.py`, `test_tableau.py`), no new failures introduced.
 
-## Caveats
-
-- `path_clustering.py` ↔ paper `path_clustering` mapping is a name match, not an in-code citation.
-- Because `hill_climbing`'s search (not just its reported score) uses `_cut_rank`, the fix can
-  change which orderings get accepted as "improving" mid-search — so best-known orderings for
-  previously-run graphs may change, not just the reported numbers.
-- `stabTableau.n_e` / height function usage in `lib/circuitSolver.py` is untouched by this fix and
-  was never affected.
 
